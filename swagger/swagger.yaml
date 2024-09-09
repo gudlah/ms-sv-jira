@@ -1,0 +1,565 @@
+definitions:
+  dto.ReqDownstreamCheckBill:
+    properties:
+      cardNumber:
+        maxLength: 16
+        minLength: 16
+        type: string
+      otpCode:
+        type: string
+      phoneNumber:
+        type: string
+      sessionId:
+        type: string
+    required:
+    - cardNumber
+    - otpCode
+    - phoneNumber
+    - sessionId
+    type: object
+  dto.ReqDownstreamCheckCreditCard:
+    properties:
+      cardNumber:
+        maxLength: 16
+        minLength: 16
+        type: string
+      jenisTransaksi:
+        type: string
+      phoneNumber:
+        type: string
+      sessionId:
+        type: string
+    required:
+    - cardNumber
+    - jenisTransaksi
+    - phoneNumber
+    - sessionId
+    type: object
+  dto.ReqDownstreamCheckLimit:
+    properties:
+      cardNumber:
+        maxLength: 16
+        minLength: 16
+        type: string
+      otpCode:
+        type: string
+      phoneNumber:
+        type: string
+      sessionId:
+        type: string
+    required:
+    - cardNumber
+    - otpCode
+    - phoneNumber
+    - sessionId
+    type: object
+  dto.ReqDownstreamResendOtp:
+    properties:
+      jenisTransaksi:
+        type: string
+      phoneNumber:
+        type: string
+      sessionId:
+        type: string
+    required:
+    - jenisTransaksi
+    - phoneNumber
+    - sessionId
+    type: object
+  dto.ReqLogin:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  dto.SwaggerBackendError:
+    properties:
+      data:
+        type: object
+      message:
+        example: Backend error
+        type: string
+      responseCode:
+        example: "2002"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerCheckBillSuccess:
+    properties:
+      data:
+        properties:
+          billAmount:
+            example: "10"
+            type: string
+          billDueDate:
+            example: "20130620"
+            type: string
+          billMinAmount:
+            example: "0"
+            type: string
+          billName:
+            example: Satrio Pinayungan
+            type: string
+          cardNumber:
+            example: 6189********0002
+            type: string
+          statementBalance:
+            example: "0000000010"
+            type: string
+          statementBalanceIndicator:
+            example: +
+            type: string
+          totalDueAmount:
+            example: "0000000010"
+            type: string
+          totalDueAmountIndicator:
+            example: ' '
+            type: string
+        type: object
+      message:
+        example: Successfully
+        type: string
+      responseCode:
+        example: "0000"
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  dto.SwaggerCheckCreditCardSuccess:
+    properties:
+      data:
+        properties:
+          cardNumber:
+            example: 6189********0002
+            type: string
+          name:
+            example: Satrio Pinayungan
+            type: string
+          phoneNumber:
+            example: "081208120812"
+            type: string
+        type: object
+      message:
+        example: Successfully
+        type: string
+      responseCode:
+        example: "0000"
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  dto.SwaggerCheckLimitBillReached:
+    properties:
+      data:
+        type: object
+      message:
+        example: OTP limit reached
+        type: string
+      responseCode:
+        example: "1009"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerCheckLimitSuccess:
+    properties:
+      data:
+        properties:
+          availCashRemain:
+            example: "8619230"
+            type: string
+          availCashRemainIndicator:
+            example: +
+            type: string
+          availCredit:
+            example: "8619230"
+            type: string
+          availCreditIndicator:
+            example: +
+            type: string
+          availableCredit:
+            example: "8619230"
+            type: string
+          availableCreditIndicator:
+            example: +
+            type: string
+          cardNumber:
+            example: 6189********0002
+            type: string
+          cashLimit:
+            example: "0"
+            type: string
+          creditLimit:
+            example: "9000000"
+            type: string
+          dailyCashLimit:
+            example: "8619230"
+            type: string
+        type: object
+      message:
+        example: Successfully
+        type: string
+      responseCode:
+        example: "0000"
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  dto.SwaggerGeneralSystemError:
+    properties:
+      data:
+        type: object
+      message:
+        example: General system error
+        type: string
+      responseCode:
+        example: "2001"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerInvalidCredential:
+    properties:
+      data:
+        type: object
+      message:
+        example: Invalid credential
+        type: string
+      responseCode:
+        example: "1001"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerInvalidValue:
+    properties:
+      data:
+        type: object
+      message:
+        example: Invalid value
+        type: string
+      responseCode:
+        example: "1002"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerIpBlocked:
+    properties:
+      data:
+        type: object
+      message:
+        example: IP blocked
+        type: string
+      responseCode:
+        example: "2004"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerLoginSuccess:
+    properties:
+      data:
+        properties:
+          expiredAt:
+            example: 2023-12-28  02:05:27 +07
+            type: string
+          token:
+            example: QmVhcmVyIGV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUp3WlhKdWNpSTZJa==
+            type: string
+        type: object
+      message:
+        example: Successfully
+        type: string
+      responseCode:
+        example: "0000"
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  dto.SwaggerResendOtpReached:
+    properties:
+      data:
+        type: object
+      message:
+        example: Request limit reached
+        type: string
+      responseCode:
+        example: "1010"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerResendOtpSuccess:
+    properties:
+      data:
+        type: object
+      message:
+        example: Successfully
+        type: string
+      responseCode:
+        example: "0000"
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/bill:
+    post:
+      consumes:
+      - application/json
+      description: Check bill of credit card
+      parameters:
+      - default: Bearer <Add access token here>
+        description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Body Request
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ReqDownstreamCheckBill'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SwaggerCheckBillSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidValue'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidCredential'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.SwaggerIpBlocked'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/dto.SwaggerCheckLimitBillReached'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.SwaggerGeneralSystemError'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/dto.SwaggerBackendError'
+      summary: Check Bill
+      tags:
+      - Credit Card
+  /api/v1/limit:
+    post:
+      consumes:
+      - application/json
+      description: Check limit of credit card
+      parameters:
+      - default: Bearer <Add access token here>
+        description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Body Request
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ReqDownstreamCheckLimit'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SwaggerCheckLimitSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidValue'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidCredential'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.SwaggerIpBlocked'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/dto.SwaggerCheckLimitBillReached'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.SwaggerGeneralSystemError'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/dto.SwaggerBackendError'
+      summary: Check Limit
+      tags:
+      - Credit Card
+  /api/v1/login:
+    post:
+      consumes:
+      - application/json
+      description: Login to get bearer token
+      parameters:
+      - description: Body Request
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ReqLogin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SwaggerLoginSuccess'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidCredential'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.SwaggerIpBlocked'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.SwaggerGeneralSystemError'
+      summary: Login
+      tags:
+      - Login
+  /api/v1/resend-otp:
+    post:
+      consumes:
+      - application/json
+      description: Resend OTP for failed when validate credit card
+      parameters:
+      - default: Bearer <Add access token here>
+        description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Body Request
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ReqDownstreamResendOtp'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SwaggerResendOtpSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidValue'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidCredential'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.SwaggerIpBlocked'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/dto.SwaggerResendOtpReached'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.SwaggerGeneralSystemError'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/dto.SwaggerBackendError'
+      summary: Resend OTP
+      tags:
+      - OTP
+  /api/v1/verif-credit-phone:
+    post:
+      consumes:
+      - application/json
+      description: validate whether the user's mobile number is the mobile number
+        registered on the credit card
+      parameters:
+      - default: Bearer <Add access token here>
+        description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Body Request
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ReqDownstreamCheckCreditCard'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SwaggerCheckCreditCardSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidValue'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidCredential'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.SwaggerIpBlocked'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.SwaggerGeneralSystemError'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/dto.SwaggerBackendError'
+      summary: Validate Credit Card
+      tags:
+      - Credit Card
+swagger: "2.0"
