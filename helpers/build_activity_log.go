@@ -6,7 +6,7 @@ import (
 	"ms-sv-jira/models/entity"
 )
 
-func BuildActivityLog(param dto.ActivityLogParam, sessionId string) entity.ActivityLog {
+func BuildActivityLog(param dto.ActivityLogParam) entity.ActivityLog {
 	stringResponse, _ := json.Marshal(param.Response)
 	return entity.ActivityLog{
 		Id:           GenerateUUID(),
@@ -18,6 +18,5 @@ func BuildActivityLog(param dto.ActivityLogParam, sessionId string) entity.Activ
 		BodyResponse: string(stringResponse),
 		ClientIp:     param.IpClient,
 		CreatedAt:    Now(),
-		SessionId:    sessionId,
 	}
 }

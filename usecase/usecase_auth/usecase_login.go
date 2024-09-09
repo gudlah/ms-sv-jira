@@ -13,7 +13,7 @@ func (usecase *AuthUsecaseImpl) LoginUsecase(kosong interface{}, loginRequest dt
 	} else if user.Id == 0 {
 		httpCode, res = helpers.ResInvalidCredential(kosong)
 	} else {
-		httpCode, res = usecase.Authentication(kosong, loginRequest, user)
+		httpCode, res = usecase.Authentication(kosong, loginRequest, user.Password)
 	}
 	idUser = strconv.Itoa(user.Id)
 	return

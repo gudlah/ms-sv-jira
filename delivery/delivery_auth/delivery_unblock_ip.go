@@ -39,7 +39,7 @@ func (delivery *AuthDeliveryImpl) UnblockIpDelivery(ginContext *gin.Context) {
 	httpCode, response = delivery.AuthUsecase.ValidateBlockUsecase(ipClient, httpCode, response, kosong)
 
 	activityLogParam := helpers.BuildActivityLogParam(idRequest, requestString, httpCode, kosong, ginContext, response)
-	httpCode, response = delivery.LogUsecase.InsertLogActivityUsecase(activityLogParam, "")
+	httpCode, response = delivery.LogUsecase.InsertLogActivityUsecase(activityLogParam)
 	tx.Result = response.ResponseCode
 	ginContext.JSON(httpCode, response)
 }
