@@ -12,7 +12,7 @@ func BuildActivityLogParam(idRequest, request string, httpCode int, kosong inter
 		IdRequest: idRequest,
 		IdUser:    idUser,
 		IpClient:  ipClient,
-		Activity:  activity,
+		Endpoint:  activity,
 		Request:   request,
 		Response:  response,
 		HttpCode:  httpCode,

@@ -20,33 +20,32 @@ func BasicAuth(authDelivery delivery_auth.AuthDelivery, logUsecase usecase_log.L
 		tx.Context.SetLabel("idRequest", idRequest)
 
 		var idUser interface{}
-		var response dto.Res
+		var res dto.Res
 		var httpCode int
 
 		username, password, ok := ginContext.Request.BasicAuth()
 
 		if !ok {
-			httpCode, response = helpers.ResInvalidCredential(kosong)
+			httpCode, res = helpers.ResInvalidCredential(kosong)
 		} else {
 			reqLogin := dto.ReqLogin{
 				Username: username,
 				Password: password,
 			}
-			httpCode, response, idUser = authDelivery.LoginDelivery(kosong, reqLogin)
-			if response.ResponseCode != "0000" {
-				httpCode, response = helpers.ResInvalidCredential(kosong)
+			httpCode, res, idUser = authDelivery.LoginDelivery(kosong, reqLogin)
+			if res.ResponseCode != "0000" {
+				httpCode, res = helpers.ResInvalidCredential(kosong)
 			} else {
-				httpCode, response = helpers.ResSuccess(true, "0000", "Successfully", kosong)
+				httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", kosong)
+				ginContext.Set("idUser", idUser)
 			}
 		}
 
-		ginContext.Set("idUser", idUser)
-
 		if httpCode != 200 {
-			activityLogParam := helpers.BuildActivityLogParam(idRequest, "", httpCode, kosong, ginContext, response)
-			httpCode, response = logUsecase.InsertLogActivityUsecase(activityLogParam)
+			activityLogParam := helpers.BuildActivityLogParam(idRequest, "", httpCode, kosong, ginContext, res)
+			httpCode, res = logUsecase.InsertLogActivityUsecase(activityLogParam)
 			tx.Result = strconv.Itoa(httpCode)
-			ginContext.AbortWithStatusJSON(httpCode, response)
+			ginContext.AbortWithStatusJSON(httpCode, res)
 			return
 		}
 	}

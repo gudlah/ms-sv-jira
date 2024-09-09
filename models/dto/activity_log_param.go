@@ -4,7 +4,7 @@ type ActivityLogParam struct {
 	IdRequest string
 	IdUser    string
 	IpClient  string
-	Activity  string
+	Endpoint  string
 	Request   string
 	Response  Res
 	HttpCode  int

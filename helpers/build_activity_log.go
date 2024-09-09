@@ -12,7 +12,7 @@ func BuildActivityLog(param dto.ActivityLogParam) entity.ActivityLog {
 		Id:           GenerateUUID(),
 		IdRequest:    param.IdRequest,
 		IdUser:       param.IdUser,
-		Activity:     param.Activity,
+		Endpoint:     param.Endpoint,
 		ResponseCode: param.Response.ResponseCode,
 		BodyRequest:  TrimAll(param.Request),
 		BodyResponse: string(stringResponse),

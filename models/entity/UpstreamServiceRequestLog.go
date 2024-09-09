@@ -8,7 +8,5 @@ type UpstreamServiceRequestLog struct {
 	IsSuccess         int    `json:"is_success" gorm:"type:int"`
 	RequestTimestamp  string `json:"request_timestamp" gorm:"type:datetime"`
 	ResponseTimestamp string `json:"response_timestamp" gorm:"type:datetime"`
-	Service           string `json:"service" gorm:"type:varchar(50)"`
-	Action            string `json:"action" gorm:"type:varchar(50)"`
 	Url               string `json:"url" gorm:"type:varchar(100)"`
 }
