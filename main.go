@@ -37,7 +37,7 @@ func main() {
 	authDelivery := delivery_auth.NewAuthDelivery(authUsecase, logUsecase, validate)
 
 	jiraUsecase := usecase_jira.NewJiraUsecase(externalRepository, logUsecase)
-	jiraDelivery := delivery_jira.NewJiraDelivery(authUsecase, jiraUsecase, logUsecase, validate)
+	jiraDelivery := delivery_jira.NewJiraDelivery(authDelivery, jiraUsecase, logUsecase, validate)
 
 	routerParam := RouterParam{
 		LogUsecase:   logUsecase,
