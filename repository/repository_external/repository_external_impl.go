@@ -7,13 +7,13 @@ import (
 )
 
 type ExternalRepositoryImpl struct {
-	RestyConfig   *resty.Client
-	BrigateConfig dto.BrigateConfig
+	RestyConfig *resty.Client
+	JiraConfig  dto.JiraConfig
 }
 
-func NewExternalRepository(restyConfig *resty.Client, brigateConfig dto.BrigateConfig) ExternalRepository {
+func NewExternalRepository(restyConfig *resty.Client, jiraConfig dto.JiraConfig) ExternalRepository {
 	return &ExternalRepositoryImpl{
-		RestyConfig:   restyConfig,
-		BrigateConfig: brigateConfig,
+		RestyConfig: restyConfig,
+		JiraConfig:  jiraConfig,
 	}
 }

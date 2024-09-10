@@ -10,5 +10,5 @@ type ServerConfig struct {
 	MinuteQueryFail  int    `env:"MINUTE_QUERY_FAIL"`
 	OtpExpiredSecond uint   `env:"OTP_EXPIRED_SECOND"`
 	Database         DatabaseConfig
-	Brigate          BrigateConfig
+	Jira             JiraConfig
 }

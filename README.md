@@ -45,12 +45,8 @@ Merupakan suatu variabel yang ditetapkan diluar program melalui fungsionalitas y
 | DB_SSL_MODE                       | Database SSL Mode                             |
 | SERVICE_HOST                      | Host Service                                  |
 | SERVICE_PORT                      | Port Service                                  |
-| ELASTIC_APM_SERVER_URL            | Elastic APM URL                               |
-| ALLOW_ORIGIN                      | Allow Origin                                  |
-| BRIGATE_URL                       | Brigate URL                                   |
-| BRIGATE_USERNAME                  | Brigate Username                              |
-| BRIGATE_PASSWORD                  | Brigate Password                              |
-| ESB_URL                           | ESB URL                                       |
-| ESB_CHANNEL_ID                    | ESB Channel Id                                |
-| ESB_GET_CREDIT_CARD_SERVICE_ID    | ESB Get Credit Card Service Id                |
+| JIRA_URL                          | Jira URL                                      |
+| JIRA_EMAIL                        | Jira Email                                    |
+| JIRA_TOKEN                        | Jira Token                                    |
 | JWT_EXPIRED                       | JWT Expiration Time                           |
+| MINUTE_QUERY_FAIL                 | Minute Query Fail                             |
