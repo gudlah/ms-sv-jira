@@ -1,7 +1,6 @@
 package main
 
 import (
-	"crypto/tls"
 	"ms-sv-jira/config"
 	"ms-sv-jira/delivery/delivery_auth"
 	"ms-sv-jira/delivery/delivery_jira"
@@ -14,7 +13,6 @@ import (
 	"os"
 
 	"github.com/go-playground/validator/v10"
-	"github.com/go-resty/resty/v2"
 )
 
 type RouterParam struct {
@@ -27,13 +25,8 @@ func main() {
 	os.Setenv("TZ", "Asia/Jakarta")
 	konfigurasi := config.Config
 	database := config.ConnectDatabase(konfigurasi.Database)
+	restyConfig := config.RestyConfig(konfigurasi.Jira)
 	validate := validator.New()
-
-	restyConfig := resty.
-		New().
-		SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
-		SetDisableWarn(true).
-		SetBasicAuth(konfigurasi.Jira.Email, konfigurasi.Jira.Token)
 
 	databaseRepository := repository_database.NewDatabaseRepository(database, konfigurasi.MinuteQueryFail)
 	externalRepository := repository_external.NewExternalRepository(restyConfig, konfigurasi.Jira)

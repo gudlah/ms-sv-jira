@@ -9,8 +9,8 @@ import (
 )
 
 func (delivery *JiraDeliveryImpl) GetAllProjectDelivery(ginContext *gin.Context) {
-	idRequest, _, ipClient, transaksi, _, _ := helpers.ConfigInit(ginContext)
-	kosong := make([]dto.ResUpstreamGetAllProject, 0)
+	idRequest, _, _, transaksi, _, _ := helpers.ConfigInit(ginContext)
+	kosong := make([]dto.ResDownstreamGetAllProject, 0)
 
 	tx := apm.DefaultTracer.StartTransaction(transaksi, "response_code")
 	defer tx.End()
@@ -20,8 +20,6 @@ func (delivery *JiraDeliveryImpl) GetAllProjectDelivery(ginContext *gin.Context)
 	var httpCode int
 
 	httpCode, response = delivery.JiraUsecase.GetAllProjectUsecase(kosong, idRequest)
-
-	httpCode, response = delivery.AuthUsecase.ValidateBlockUsecase(ipClient, httpCode, response, kosong)
 
 	activityLogParam := helpers.BuildActivityLogParam(idRequest, "", httpCode, kosong, ginContext, response)
 	httpCode, response = delivery.LogUsecase.InsertLogActivityUsecase(activityLogParam)

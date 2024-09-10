@@ -1,14 +1,12 @@
 package usecase_auth
 
 import (
-	"fmt"
 	"ms-sv-jira/helpers"
 	"ms-sv-jira/models/dto"
 )
 
 func (usecase *AuthUsecaseImpl) LoginUsecase(kosong interface{}, loginRequest dto.ReqLogin) (httpCode int, res dto.Res, idUser string) {
 	user, err := usecase.DatabaseRepository.GetUser(loginRequest.Username)
-	fmt.Println(user)
 	if err != nil {
 		httpCode, res = helpers.ResGeneralSystemError(kosong)
 	} else if user.Id == "" {

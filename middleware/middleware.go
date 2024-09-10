@@ -13,7 +13,7 @@ import (
 
 func BasicAuth(authDelivery delivery_auth.AuthDelivery, logUsecase usecase_log.LogUsecase) gin.HandlerFunc {
 	return func(ginContext *gin.Context) {
-		idRequest, _, _, transaksi, _, kosong := helpers.ConfigInit(ginContext)
+		idRequest, _, ipClient, transaksi, _, kosong := helpers.ConfigInit(ginContext)
 
 		tx := apm.DefaultTracer.StartTransaction(transaksi, "response_code")
 		defer tx.End()
@@ -40,6 +40,7 @@ func BasicAuth(authDelivery delivery_auth.AuthDelivery, logUsecase usecase_log.L
 				ginContext.Set("idUser", idUser)
 			}
 		}
+		httpCode, res = authDelivery.ValidateBlockDelivery(ipClient, httpCode, res, kosong)
 
 		if httpCode != 200 {
 			activityLogParam := helpers.BuildActivityLogParam(idRequest, "", httpCode, kosong, ginContext, res)
