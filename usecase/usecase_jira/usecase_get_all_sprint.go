@@ -30,13 +30,12 @@ func (usecase *JiraUsecaseImpl) GetAllSprintUsecase(kosong interface{}, idReques
 		resStruct := dto.ResUpstreamGetAllSprint{}
 		json.Unmarshal(resUpstream.Body(), &resStruct)
 
+		dataOutput := make([]dto.ResDownstreamGetAllSprint, len(resStruct.Values))
 		if resStruct.Total == 0 {
 			logUpstream.IsSuccess = 0
-			dataOutput := make([]dto.ResDownstreamGetAllSprint, 0)
 			httpCode, res = helpers.ResSuccess(true, "1003", "Data not found", dataOutput)
 		} else {
 			logUpstream.IsSuccess = 1
-			dataOutput := make([]dto.ResDownstreamGetAllSprint, len(resStruct.Values))
 			for index, sprint := range resStruct.Values {
 				dataOutput[index] = dto.ResDownstreamGetAllSprint{
 					SprintId:    sprint.Id,
