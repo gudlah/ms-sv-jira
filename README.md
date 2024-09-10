@@ -2,11 +2,11 @@
 
 ###### version: v0.5
 
-###### Last Update: 2024-08-13
+###### Last Update: 2024-09-10
 
 ### Programming Language
 
-- [go1.20 windows/amd64]
+- [go1.21 windows/amd64]
 
 ### Framework
 
