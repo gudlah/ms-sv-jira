@@ -20,11 +20,11 @@ func buildDataCard(columnName string, dataCard dto.ResUpstreamGetAllCard) (dataO
 	if dataCard.Total == 0 {
 		dataOutput = make([]dto.CardDownstreamGetAllCard, dataCard.Total)
 	} else {
-		issues := []dto.CardDownstreamGetAllCard{}
+		cards := []dto.CardDownstreamGetAllCard{}
 		for _, card := range dataCard.Issues {
 			field := card.Fields
 			if field.Status.Name == columnName {
-				dataIssue := dto.CardDownstreamGetAllCard{
+				dataBuildCard := dto.CardDownstreamGetAllCard{
 					Summary:      field.Summary,
 					IssueTypeId:  field.IssueType.ID,
 					IssueType:    field.IssueType.Name,
@@ -40,14 +40,14 @@ func buildDataCard(columnName string, dataCard dto.ResUpstreamGetAllCard) (dataO
 					ReporterId:   field.Reporter.AccountID,
 					ReporterName: field.Reporter.DisplayName,
 				}
-				dataIssue.Comments = buildCommentData(field.Comment)
-				dataIssue.Attachments = buildAttachmentData(field.Attachment)
+				dataBuildCard.Comments = buildCommentData(field.Comment)
+				dataBuildCard.Attachments = buildAttachmentData(field.Attachment)
 
-				issues = append(issues, dataIssue)
+				cards = append(cards, dataBuildCard)
 			}
 		}
 
-		dataOutput = issues
+		dataOutput = cards
 	}
 	return
 }
