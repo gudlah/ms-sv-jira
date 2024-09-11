@@ -6,7 +6,7 @@ import (
 )
 
 type DatabaseRepository interface {
-	GetUser(username string) (entity.Users, error)
+	GetUser(username string) (entity.ServiceUsers, error)
 	InsertLogActivityRepository(log entity.ActivityLog) error
 	InsertLogUpstreamRepository(log entity.UpstreamServiceRequestLog) error
 	GetSymbolsRepository() ([]entity.Symbols, error)

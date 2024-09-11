@@ -119,7 +119,7 @@ CREATE TABLE `upstream_service_request_log` (
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `service_users` (
   `id` varchar(255) NOT NULL,
   `username` varchar(100) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
@@ -127,11 +127,9 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `users`
---
+ALTER TABLE `service_users` ADD PRIMARY KEY (`id`);
 
-INSERT INTO `users` (`id`, `username`, `password`, `is_active`, `created_at`) VALUES
+INSERT INTO `service_users` (`id`, `username`, `password`, `is_active`, `created_at`) VALUES
 ('b0577d97-3a3d-44c9-a82f-0ff348ca951d', 'svi', '$2a$12$HUUsrBqls5p8Sh3TxmKV0uPQjTsXa2p.O9Uob2G6iJFa.g/z5mAJu', 1, '2024-09-09 19:32:01');
 
 --
@@ -165,8 +163,7 @@ ALTER TABLE `upstream_service_request_log`
 --
 -- Indexes for table `users`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
