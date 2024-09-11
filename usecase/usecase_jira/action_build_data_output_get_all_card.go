@@ -52,21 +52,6 @@ func buildDataCard(columnName string, dataCard dto.ResUpstreamGetAllCard) (dataO
 	return
 }
 
-func buildAttachmentData(dataAttachment []dto.Attachment) (dataOutput []dto.AttachmentDownstreamGetAllCard) {
-	dataOutput = make([]dto.AttachmentDownstreamGetAllCard, len(dataAttachment))
-	for indexAttachment, attachment := range dataAttachment {
-		dataOutput[indexAttachment] = dto.AttachmentDownstreamGetAllCard{
-			AttachmentId: attachment.Id,
-			FileName:     attachment.Filename,
-			AuthorId:     attachment.Author.AccountId,
-			AuthorName:   attachment.Author.DisplayName,
-			Created:      attachment.Created,
-			Url:          attachment.Content,
-		}
-	}
-	return
-}
-
 func buildCommentData(dataComment dto.Comment) (dataOutput []dto.CommentDownstreamGetAllCard) {
 	dataOutput = make([]dto.CommentDownstreamGetAllCard, dataComment.Total)
 	for indexComent, comment := range dataComment.Comments {
@@ -77,6 +62,21 @@ func buildCommentData(dataComment dto.Comment) (dataOutput []dto.CommentDownstre
 			Body:       comment.Body,
 			Created:    comment.Created,
 			Updated:    comment.Updated,
+		}
+	}
+	return
+}
+
+func buildAttachmentData(dataAttachment []dto.Attachment) (dataOutput []dto.AttachmentDownstreamGetAllCard) {
+	dataOutput = make([]dto.AttachmentDownstreamGetAllCard, len(dataAttachment))
+	for indexAttachment, attachment := range dataAttachment {
+		dataOutput[indexAttachment] = dto.AttachmentDownstreamGetAllCard{
+			AttachmentId: attachment.Id,
+			FileName:     attachment.Filename,
+			AuthorId:     attachment.Author.AccountId,
+			AuthorName:   attachment.Author.DisplayName,
+			Created:      attachment.Created,
+			Url:          attachment.Content,
 		}
 	}
 	return
