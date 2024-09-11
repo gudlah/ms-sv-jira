@@ -7,9 +7,11 @@ type ResDownstreamGetAllCard struct {
 }
 
 type CardDownstreamGetAllCard struct {
-	Summary      string                           `json:"summary"`
-	IssueTypeId  string                           `json:"issueTypeId"`
-	IssueType    string                           `json:"issueType"`
+	CardId       string                           `json:"cardId"`
+	CardTitle    string                           `json:"cardTitle"`
+	CardKey      string                           `json:"cardKey"`
+	CardTypeId   string                           `json:"cardTypeId"`
+	CardTypeName string                           `json:"cardType"`
 	Created      string                           `json:"created"`
 	Updated      string                           `json:"updated"`
 	PriorityId   string                           `json:"priorityId"`

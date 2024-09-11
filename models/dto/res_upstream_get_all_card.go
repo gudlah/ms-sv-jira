@@ -130,6 +130,7 @@ type Worklog struct {
 }
 
 type IssueFields struct {
+	Expand                   string           `json:"expand"`
 	StatusCategoryChangeDate string           `json:"statuscategorychangedate"`
 	IssueType                IssueType        `json:"issuetype"`
 	Parent                   *Parent          `json:"parent,omitempty"`
@@ -183,7 +184,6 @@ type AttachmentAuthor struct {
 }
 
 type Issue struct {
-	Expand string      `json:"expand"`
 	ID     string      `json:"id"`
 	Key    string      `json:"key"`
 	Fields IssueFields `json:"fields"`

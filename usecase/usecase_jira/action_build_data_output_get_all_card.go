@@ -25,9 +25,11 @@ func buildDataCard(columnName string, dataCard dto.ResUpstreamGetAllCard) (dataO
 			field := card.Fields
 			if field.Status.Name == columnName {
 				dataBuildCard := dto.CardDownstreamGetAllCard{
-					Summary:      field.Summary,
-					IssueTypeId:  field.IssueType.ID,
-					IssueType:    field.IssueType.Name,
+					CardId:       card.ID,
+					CardTitle:    field.Summary,
+					CardKey:      card.Key,
+					CardTypeId:   field.IssueType.ID,
+					CardTypeName: field.IssueType.Name,
 					Created:      field.Created,
 					Updated:      field.Updated,
 					PriorityId:   field.Priority.ID,
