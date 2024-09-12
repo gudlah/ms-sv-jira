@@ -40,6 +40,7 @@ func NewRouter(routerParam RouterParam) *gin.Engine {
 		rootRouter.POST("/projects", routerParam.JiraDelivery.GetAllProjectDelivery)
 		rootRouter.POST("/sprints", routerParam.JiraDelivery.GetAllSprintDelivery)
 		rootRouter.POST("/cards", routerParam.JiraDelivery.GetAllCardDelivery)
+		rootRouter.POST("/subtasks", routerParam.JiraDelivery.GetAllSubTaskDelivery)
 	}
 	router.NoRoute(routerParam.AuthDelivery.PageNotFoundDelivery)
 

@@ -6,4 +6,5 @@ type JiraDelivery interface {
 	GetAllProjectDelivery(ginContext *gin.Context)
 	GetAllSprintDelivery(ginContext *gin.Context)
 	GetAllCardDelivery(ginContext *gin.Context)
+	GetAllSubTaskDelivery(ginContext *gin.Context)
 }
