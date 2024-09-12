@@ -2,7 +2,7 @@
 
 ###### version: v0.5
 
-###### Last Update: 2024-09-10
+###### Last Update: 2024-09-12
 
 ### Programming Language
 
@@ -48,5 +48,4 @@ Merupakan suatu variabel yang ditetapkan diluar program melalui fungsionalitas y
 | JIRA_URL                          | Jira URL                                      |
 | JIRA_EMAIL                        | Jira Email                                    |
 | JIRA_TOKEN                        | Jira Token                                    |
-| JWT_EXPIRED                       | JWT Expiration Time                           |
 | MINUTE_QUERY_FAIL                 | Minute Query Fail                             |

@@ -48,9 +48,6 @@ Thumbs.db
 *.mov
 *.wmv
 
-#ssl
-ssl/
-
 # env file
 .env
 .env.lokal
