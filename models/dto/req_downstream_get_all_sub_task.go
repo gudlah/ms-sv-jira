@@ -1,5 +1,5 @@
 package dto
 
 type ReqDownstreamGetAllSubTask struct {
-	CardId string `json:"cardId" validate:"required,numeric"`
+	CardKey string `json:"cardKey" validate:"required"`
 }

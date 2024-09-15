@@ -1,63 +1,66 @@
 package dto
 
 type ResUpstreamGetAllSubTask struct {
-	Expand string                      `json:"expand"`
+	Expand     string                       `json:"expand"`
+	StartAt    int                          `json:"startAt"`
+	MaxResults int                          `json:"maxResults"`
+	Total      int                          `json:"total"`
+	Issues     []IssueUpstreamGetAllSubTask `json:"issues"`
+}
+
+type IssueUpstreamGetAllSubTask struct {
 	ID     string                      `json:"id"`
-	Self   string                      `json:"self"`
+	Expand string                      `json:"expand"`
 	Key    string                      `json:"key"`
 	Fields FieldsUpstreamGetAllSubTask `json:"fields"`
 }
 
 type FieldsUpstreamGetAllSubTask struct {
-	Subtasks []SubtaskUpstreamGetAllSubTask `json:"subtasks"`
+	StatusCategoryChangeDate string                           `json:"statuscategorychangedate"`
+	IssueType                TypeUpstreamGetAllSubTask        `json:"issuetype"`
+	Created                  string                           `json:"created"`
+	Priority                 PriorityUpstreamGetAllSubTask    `json:"priority"`
+	Assignee                 UserUpstreamGetAllSubTask        `json:"assignee"`
+	Updated                  string                           `json:"updated"`
+	Resolutiondate           string                           `json:"resolutiondate"`
+	Status                   StatusUpstreamGetAllSubTask      `json:"status"`
+	Summary                  string                           `json:"summary"`
+	Creator                  UserUpstreamGetAllSubTask        `json:"creator"`
+	Reporter                 UserUpstreamGetAllSubTask        `json:"reporter"`
+	Description              DescriptionUpstreamGetAllSubTask `json:"description"`
 }
 
-type SubtaskUpstreamGetAllSubTask struct {
-	ID     string                         `json:"id"`
-	Key    string                         `json:"key"`
-	Self   string                         `json:"self"`
-	Fields SubFieldsUpstreamGetAllSubTask `json:"fields"`
-}
-
-type SubFieldsUpstreamGetAllSubTask struct {
-	Summary   string                         `json:"summary"`
-	Status    StatusUpstreamGetAllSubTask    `json:"status"`
-	Priority  PriorityUpstreamGetAllSubTask  `json:"priority"`
-	Issuetype IssuetypeUpstreamGetAllSubTask `json:"issuetype"`
-}
-
-type StatusUpstreamGetAllSubTask struct {
-	Self           string                              `json:"self"`
-	Description    string                              `json:"description"`
-	IconURL        string                              `json:"iconUrl"`
-	Name           string                              `json:"name"`
-	ID             string                              `json:"id"`
-	StatusCategory StatusCategoryUpstreamGetAllSubTask `json:"statusCategory"`
-}
-
-type StatusCategoryUpstreamGetAllSubTask struct {
-	Self      string `json:"self"`
-	ID        int    `json:"id"`
-	Key       string `json:"key"`
-	ColorName string `json:"colorName"`
-	Name      string `json:"name"`
+type TypeUpstreamGetAllSubTask struct {
+	ID string `json:"id"`
 }
 
 type PriorityUpstreamGetAllSubTask struct {
-	Self    string `json:"self"`
-	IconURL string `json:"iconUrl"`
-	Name    string `json:"name"`
-	ID      string `json:"id"`
+	ID   string `json:"id"`
+	Name string `json:"name"`
 }
 
-type IssuetypeUpstreamGetAllSubTask struct {
-	Self           string `json:"self"`
-	ID             string `json:"id"`
-	Description    string `json:"description"`
-	IconURL        string `json:"iconUrl"`
-	Name           string `json:"name"`
-	Subtask        bool   `json:"subtask"`
-	AvatarID       int    `json:"avatarId"`
-	EntityID       string `json:"entityId"`
-	HierarchyLevel int    `json:"hierarchyLevel"`
+type UserUpstreamGetAllSubTask struct {
+	AccountID   string `json:"accountId"`
+	DisplayName string `json:"displayName"`
+}
+
+type StatusUpstreamGetAllSubTask struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type DescriptionUpstreamGetAllSubTask struct {
+	Type    string                         `json:"type"`
+	Content []ContentUpstreamGetAllSubTask `json:"content"`
+}
+
+type ContentUpstreamGetAllSubTask struct {
+	Type    string                              `json:"type"`
+	Text    string                              `json:"text"`
+	Content []ValueContentUpstreamGetAllSubTask `json:"content"`
+}
+
+type ValueContentUpstreamGetAllSubTask struct {
+	Type string `json:"type"`
+	Text string `json:"text"`
 }

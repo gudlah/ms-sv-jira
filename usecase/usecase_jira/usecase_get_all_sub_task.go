@@ -15,7 +15,7 @@ func (usecase *JiraUsecaseImpl) GetAllSubTaskUsecase(kosong interface{}, idReque
 		RequestTimestamp: helpers.Now(),
 	}
 
-	resUpstream, err := usecase.ExternalRepository.GetAllSubtaskRepository(bodyRequest.CardId)
+	resUpstream, err := usecase.ExternalRepository.GetAllSubtaskRepository(bodyRequest.CardKey)
 	logUpstream.Url = resUpstream.Request.URL
 	logUpstream.ResponseTimestamp = helpers.Now()
 
@@ -28,22 +28,32 @@ func (usecase *JiraUsecaseImpl) GetAllSubTaskUsecase(kosong interface{}, idReque
 		resStruct := dto.ResUpstreamGetAllSubTask{}
 		json.Unmarshal(resUpstream.Body(), &resStruct)
 
-		if resStruct.ID == "" {
+		if resStruct.MaxResults == 0 {
 			logUpstream.IsSuccess = 0
 			httpCode, res = helpers.ResSuccess(true, "1003", "Data not found", kosong)
 		} else {
-			dataOutput := make([]dto.ResDownstreamGetAllSubTask, len(resStruct.Fields.Subtasks))
 			logUpstream.IsSuccess = 1
-			for index, subtask := range resStruct.Fields.Subtasks {
+			dataOutput := make([]dto.ResDownstreamGetAllSubTask, resStruct.Total)
+			for index, subtask := range resStruct.Issues {
 				field := subtask.Fields
 				dataOutput[index] = dto.ResDownstreamGetAllSubTask{
-					SubTaskId:    subtask.ID,
-					SubTaskKey:   subtask.Key,
-					SubTaskTitle: field.Summary,
-					StatusId:     field.Status.ID,
-					StatusName:   field.Status.Name,
-					PriorityId:   field.Priority.ID,
-					PriorityName: field.Priority.Name,
+					SubTaskId:          subtask.ID,
+					SubTaskKey:         subtask.Key,
+					SubTaskTitle:       field.Summary,
+					StatusId:           field.Status.ID,
+					StatusName:         field.Status.Name,
+					PriorityId:         field.Priority.ID,
+					PriorityName:       field.Priority.Name,
+					Created:            field.Created,
+					Updated:            field.Updated,
+					Resolved:           field.Resolutiondate,
+					AssigneeId:         field.Assignee.AccountID,
+					AssigneeName:       field.Assignee.DisplayName,
+					CreatorId:          field.Creator.AccountID,
+					CreatorName:        field.Creator.DisplayName,
+					ReporterId:         field.Reporter.AccountID,
+					ReporterName:       field.Reporter.DisplayName,
+					SubTaskDescription: buildDescription(field.Description),
 				}
 			}
 			httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", dataOutput)
@@ -53,5 +63,20 @@ func (usecase *JiraUsecaseImpl) GetAllSubTaskUsecase(kosong interface{}, idReque
 	paramInsertLogUpstream := helpers.BuildParamInsertLogUpstream(logUpstream, httpCode, res, kosong)
 	httpCode, res = usecase.LogUsecase.InsertLogUpstreamUsecase(paramInsertLogUpstream)
 
+	return
+}
+
+func buildDescription(dataDescription dto.DescriptionUpstreamGetAllSubTask) (outputDescription string) {
+	if dataDescription.Type != "" {
+		for _, descriptionContent := range dataDescription.Content {
+			if descriptionContent.Type == "paragraph" {
+				for _, valueDescriptionContent := range descriptionContent.Content {
+					if valueDescriptionContent.Type == "text" {
+						outputDescription = valueDescriptionContent.Text
+					}
+				}
+			}
+		}
+	}
 	return
 }
