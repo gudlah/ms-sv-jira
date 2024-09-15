@@ -142,7 +142,7 @@ type IssueFields struct {
 	Resolution               interface{}      `json:"resolution"`
 	CustomField10036         interface{}      `json:"customfield_10036"`
 	CustomField10027         interface{}      `json:"customfield_10027"`
-	ResolutionDate           interface{}      `json:"resolutiondate"`
+	ResolutionDate           string           `json:"resolutiondate"`
 	Workratio                int              `json:"workratio"`
 	Issuerestriction         Issuerestriction `json:"issuerestriction"`
 	LastViewed               string           `json:"lastViewed"`

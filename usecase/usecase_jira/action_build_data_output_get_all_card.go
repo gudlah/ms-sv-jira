@@ -41,6 +41,7 @@ func buildDataCard(columnName string, dataCard dto.ResUpstreamGetAllCard) (dataO
 					CreatorName:  field.Creator.DisplayName,
 					ReporterId:   field.Reporter.AccountID,
 					ReporterName: field.Reporter.DisplayName,
+					Resolved:     field.ResolutionDate,
 				}
 				dataBuildCard.Comments = buildCommentData(field.Comment)
 				dataBuildCard.Attachments = buildAttachmentData(field.Attachment)
