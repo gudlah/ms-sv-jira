@@ -33,29 +33,7 @@ func (usecase *JiraUsecaseImpl) GetAllSubTaskUsecase(kosong interface{}, idReque
 			httpCode, res = helpers.ResSuccess(true, "1003", "Data not found", kosong)
 		} else {
 			logUpstream.IsSuccess = 1
-			dataOutput := make([]dto.ResDownstreamGetAllSubTask, resStruct.Total)
-			for index, subtask := range resStruct.Issues {
-				field := subtask.Fields
-				dataOutput[index] = dto.ResDownstreamGetAllSubTask{
-					SubTaskId:          subtask.ID,
-					SubTaskKey:         subtask.Key,
-					SubTaskTitle:       field.Summary,
-					StatusId:           field.Status.ID,
-					StatusName:         field.Status.Name,
-					PriorityId:         field.Priority.ID,
-					PriorityName:       field.Priority.Name,
-					Created:            field.Created,
-					Updated:            field.Updated,
-					Resolved:           field.Resolutiondate,
-					AssigneeId:         field.Assignee.AccountID,
-					AssigneeName:       field.Assignee.DisplayName,
-					CreatorId:          field.Creator.AccountID,
-					CreatorName:        field.Creator.DisplayName,
-					ReporterId:         field.Reporter.AccountID,
-					ReporterName:       field.Reporter.DisplayName,
-					SubTaskDescription: buildDescription(field.Description),
-				}
-			}
+			dataOutput := builDataSubTask(resStruct)
 			httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", dataOutput)
 		}
 	}
@@ -63,6 +41,33 @@ func (usecase *JiraUsecaseImpl) GetAllSubTaskUsecase(kosong interface{}, idReque
 	paramInsertLogUpstream := helpers.BuildParamInsertLogUpstream(logUpstream, httpCode, res, kosong)
 	httpCode, res = usecase.LogUsecase.InsertLogUpstreamUsecase(paramInsertLogUpstream)
 
+	return
+}
+
+func builDataSubTask(dataUpstream dto.ResUpstreamGetAllSubTask) (dataOutput []dto.ResDownstreamGetAllSubTask) {
+	dataOutput = make([]dto.ResDownstreamGetAllSubTask, dataUpstream.Total)
+	for index, subtask := range dataUpstream.Issues {
+		field := subtask.Fields
+		dataOutput[index] = dto.ResDownstreamGetAllSubTask{
+			SubTaskId:          subtask.ID,
+			SubTaskKey:         subtask.Key,
+			SubTaskTitle:       field.Summary,
+			StatusId:           field.Status.ID,
+			StatusName:         field.Status.Name,
+			PriorityId:         field.Priority.ID,
+			PriorityName:       field.Priority.Name,
+			Created:            field.Created,
+			Updated:            field.Updated,
+			Resolved:           field.Resolutiondate,
+			AssigneeId:         field.Assignee.AccountID,
+			AssigneeName:       field.Assignee.DisplayName,
+			CreatorId:          field.Creator.AccountID,
+			CreatorName:        field.Creator.DisplayName,
+			ReporterId:         field.Reporter.AccountID,
+			ReporterName:       field.Reporter.DisplayName,
+			SubTaskDescription: buildDescription(field.Description),
+		}
+	}
 	return
 }
 

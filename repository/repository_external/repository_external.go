@@ -5,6 +5,7 @@ import (
 )
 
 type ExternalRepository interface {
+	GetAllUserRepository() (*resty.Response, error)
 	GetAllProjetRepository() (*resty.Response, error)
 	GetAllBoardRepository() (*resty.Response, error)
 	GetAllSprintRepository(boardId string) (*resty.Response, error)
