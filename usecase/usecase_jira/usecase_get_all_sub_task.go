@@ -5,6 +5,7 @@ import (
 	"ms-sv-jira/helpers"
 	"ms-sv-jira/models/dto"
 	"ms-sv-jira/models/entity"
+	"strconv"
 )
 
 func (usecase *JiraUsecaseImpl) GetAllSubTaskUsecase(kosong interface{}, idRequest string, bodyRequest dto.ReqDownstreamGetAllSubTask) (httpCode int, res dto.Res) {
@@ -48,13 +49,14 @@ func builDataSubTask(dataUpstream dto.ResUpstreamGetAllSubTask) (dataOutput []dt
 	dataOutput = make([]dto.ResDownstreamGetAllSubTask, dataUpstream.Total)
 	for index, subtask := range dataUpstream.Issues {
 		field := subtask.Fields
+		priorityIdInt, _ := strconv.Atoi(field.Priority.ID)
 		dataOutput[index] = dto.ResDownstreamGetAllSubTask{
 			SubTaskId:          subtask.ID,
 			SubTaskKey:         subtask.Key,
 			SubTaskTitle:       field.Summary,
 			StatusId:           field.Status.ID,
 			StatusName:         field.Status.Name,
-			PriorityId:         field.Priority.ID,
+			PriorityId:         priorityIdInt,
 			PriorityName:       field.Priority.Name,
 			Created:            field.Created,
 			Updated:            field.Updated,

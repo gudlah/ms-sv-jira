@@ -2,6 +2,7 @@ package usecase_jira
 
 import (
 	"ms-sv-jira/models/dto"
+	"strconv"
 )
 
 func (usecase *JiraUsecaseImpl) BuildDataOuputGetAllCardAction(dataColumn dto.ResUpstreamGetAllColumn, dataCard dto.ResUpstreamGetAllCard) (dataOutput []dto.ResDownstreamGetAllCard) {
@@ -24,6 +25,7 @@ func buildDataCard(columnName string, dataCard dto.ResUpstreamGetAllCard) (dataO
 		for _, card := range dataCard.Issues {
 			field := card.Fields
 			if field.Status.Name == columnName {
+				priorityIdInt, _ := strconv.Atoi(field.Priority.ID)
 				dataBuildCard := dto.CardDownstreamGetAllCard{
 					CardId:       card.ID,
 					CardTitle:    field.Summary,
@@ -32,7 +34,7 @@ func buildDataCard(columnName string, dataCard dto.ResUpstreamGetAllCard) (dataO
 					CardTypeName: field.IssueType.Name,
 					Created:      field.Created,
 					Updated:      field.Updated,
-					PriorityId:   field.Priority.ID,
+					PriorityId:   priorityIdInt,
 					PriorityName: field.Priority.Name,
 					AssigneeId:   field.Assignee.AccountID,
 					AssigneName:  field.Assignee.DisplayName,

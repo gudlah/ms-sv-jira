@@ -5,16 +5,17 @@ import (
 	"ms-sv-jira/helpers"
 	"ms-sv-jira/models/dto"
 	"ms-sv-jira/models/entity"
+	"strconv"
 )
 
-func (usecase *JiraUsecaseImpl) GetAllUserUsecase(kosong interface{}, idRequest string) (httpCode int, res dto.Res) {
+func (usecase *JiraUsecaseImpl) GetAllPriorityUsecase(kosong interface{}, idRequest string) (httpCode int, res dto.Res) {
 	logUpstream := entity.UpstreamServiceRequestLog{
 		Id:               helpers.GenerateUUID(),
 		IdRequest:        idRequest,
 		RequestPayload:   "",
 		RequestTimestamp: helpers.Now(),
 	}
-	resUpstream, err := usecase.ExternalRepository.GetAllUserRepository()
+	resUpstream, err := usecase.ExternalRepository.GetAllPriorityRepository()
 	logUpstream.Url = resUpstream.Request.URL
 	logUpstream.ResponseTimestamp = helpers.Now()
 
@@ -24,20 +25,17 @@ func (usecase *JiraUsecaseImpl) GetAllUserUsecase(kosong interface{}, idRequest 
 		httpCode, res = helpers.ResBackendError(kosong)
 	} else {
 		logUpstream.ResponsePayload = resUpstream.String()
-		resStruct := []dto.ResUpstreamGetAllUser{}
+		resStruct := []dto.ResUpstreamGetAllPriority{}
 		json.Unmarshal(resUpstream.Body(), &resStruct)
 
 		logUpstream.IsSuccess = 1
-		dataOutput := []dto.ResDownstreamGetAllUser{}
-		for _, user := range resStruct {
-			if user.AccountType == "atlassian" {
-				dataOutput = append(dataOutput, dto.ResDownstreamGetAllUser{
-					AccountID:    user.AccountID,
-					DisplayName:  user.DisplayName,
-					Active:       user.Active,
-					Locale:       user.Locale,
-					EmailAddress: user.EmailAddress,
-				})
+		dataOutput := make([]dto.ResDownstreamGetAllPriority, len(resStruct))
+		for indexPriority, priority := range resStruct {
+			priorityIdInt, _ := strconv.Atoi(priority.Id)
+			dataOutput[indexPriority] = dto.ResDownstreamGetAllPriority{
+				PriorityId:          priorityIdInt,
+				PriorityName:        priority.Name,
+				PriorityDescription: priority.Description,
 			}
 		}
 		httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", dataOutput)

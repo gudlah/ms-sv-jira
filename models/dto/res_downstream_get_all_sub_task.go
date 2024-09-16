@@ -7,7 +7,7 @@ type ResDownstreamGetAllSubTask struct {
 	SubTaskDescription string `json:"subTaskDescription"`
 	StatusId           string `json:"statusId"`
 	StatusName         string `json:"statusName"`
-	PriorityId         string `json:"priorityId"`
+	PriorityId         int    `json:"priorityId"`
 	PriorityName       string `json:"priorityName"`
 	Created            string `json:"created"`
 	Updated            string `json:"updated"`

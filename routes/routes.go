@@ -37,9 +37,10 @@ func NewRouter(routerParam RouterParam) *gin.Engine {
 	// }
 	rootRouter := router.Group("/api/v1").Use(middleware.BasicAuth(routerParam.AuthDelivery, routerParam.LogUsecase))
 	{
-		rootRouter.POST("/users", routerParam.JiraDelivery.GetAllUserDelivery)
-		rootRouter.POST("/projects", routerParam.JiraDelivery.GetAllProjectDelivery)
+		rootRouter.GET("/users", routerParam.JiraDelivery.GetAllUserDelivery)
+		rootRouter.GET("/projects", routerParam.JiraDelivery.GetAllProjectDelivery)
 		rootRouter.POST("/sprints", routerParam.JiraDelivery.GetAllSprintDelivery)
+		rootRouter.GET("/priorities", routerParam.JiraDelivery.GetAllPriorityDelivery)
 		rootRouter.POST("/cards", routerParam.JiraDelivery.GetAllCardDelivery)
 		rootRouter.POST("/subtasks", routerParam.JiraDelivery.GetAllSubTaskDelivery)
 	}
