@@ -2,6 +2,7 @@ package dto
 
 type ResDownstreamGetAllSubTask struct {
 	SubTaskId          string `json:"subTaskId"`
+	CardKey            string `json:"cardKey"`
 	SubTaskKey         string `json:"subTaskKey"`
 	SubTaskTitle       string `json:"subTaskTitle"`
 	SubTaskDescription string `json:"subTaskDescription"`

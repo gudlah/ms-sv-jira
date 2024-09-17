@@ -36,7 +36,7 @@ func main() {
 	authUsecase := usecase_auth.NewAuthUsecase(databaseRepository, logUsecase)
 	authDelivery := delivery_auth.NewAuthDelivery(authUsecase, logUsecase, validate)
 
-	jiraUsecase := usecase_jira.NewJiraUsecase(externalRepository, logUsecase)
+	jiraUsecase := usecase_jira.NewJiraUsecase(externalRepository, databaseRepository, logUsecase)
 	jiraDelivery := delivery_jira.NewJiraDelivery(authDelivery, jiraUsecase, logUsecase, validate)
 
 	routerParam := RouterParam{

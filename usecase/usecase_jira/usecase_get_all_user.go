@@ -28,19 +28,9 @@ func (usecase *JiraUsecaseImpl) GetAllUserUsecase(kosong interface{}, idRequest 
 		json.Unmarshal(resUpstream.Body(), &resStruct)
 
 		logUpstream.IsSuccess = 1
-		dataOutput := []dto.ResDownstreamGetAllUser{}
-		for _, user := range resStruct {
-			if user.AccountType == "atlassian" {
-				dataOutput = append(dataOutput, dto.ResDownstreamGetAllUser{
-					AccountID:    user.AccountID,
-					DisplayName:  user.DisplayName,
-					Active:       user.Active,
-					Locale:       user.Locale,
-					EmailAddress: user.EmailAddress,
-				})
-			}
-		}
+		dataOutput := BuildDataUser(resStruct)
 		httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", dataOutput)
+		httpCode, res = usecase.InsertJiraUserAction(kosong, dataOutput, httpCode, res)
 	}
 
 	paramInsertLogUpstream := helpers.BuildParamInsertLogUpstream(logUpstream, httpCode, res, kosong)

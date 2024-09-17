@@ -34,21 +34,10 @@ func (usecase *JiraUsecaseImpl) GetAllSprintUsecase(kosong interface{}, idReques
 			logUpstream.IsSuccess = 0
 			httpCode, res = helpers.ResSuccess(true, "1003", "Data not found", kosong)
 		} else {
-			dataOutput := make([]dto.ResDownstreamGetAllSprint, len(resStruct.Values))
 			logUpstream.IsSuccess = 1
-			for index, sprint := range resStruct.Values {
-				dataOutput[index] = dto.ResDownstreamGetAllSprint{
-					SprintId:    sprint.Id,
-					BoardId:     sprint.OriginBoardId,
-					State:       sprint.State,
-					Name:        sprint.Name,
-					StartDate:   sprint.StartDate,
-					EndDate:     sprint.EndDate,
-					CreatedDate: sprint.CreatedDate,
-					Goal:        sprint.Goal,
-				}
-			}
+			dataOutput := BuildDataSprint(resStruct)
 			httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", dataOutput)
+			httpCode, res = usecase.InsertJiraSprintAction(kosong, dataOutput, httpCode, res)
 		}
 	}
 

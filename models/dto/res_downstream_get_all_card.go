@@ -2,12 +2,14 @@ package dto
 
 type ResDownstreamGetAllCard struct {
 	ColumnId   string                     `json:"columnId"`
+	SprintId   int                        `json:"sprintId"`
 	ColumnName string                     `json:"columnName"`
 	Cards      []CardDownstreamGetAllCard `json:"cards"`
 }
 
 type CardDownstreamGetAllCard struct {
 	CardId       string                           `json:"cardId"`
+	ColumnId     string                           `json:"columnId"`
 	CardTitle    string                           `json:"cardTitle"`
 	CardKey      string                           `json:"cardKey"`
 	CardTypeId   string                           `json:"cardTypeId"`
@@ -30,6 +32,7 @@ type CardDownstreamGetAllCard struct {
 
 type CommentDownstreamGetAllCard struct {
 	CommentId  string `json:"commentId"`
+	CardId     string `json:"cardId"`
 	AuthorId   string `json:"authorId"`
 	AuthorName string `json:"authorName"`
 	Body       string `json:"body"`
@@ -39,6 +42,7 @@ type CommentDownstreamGetAllCard struct {
 
 type AttachmentDownstreamGetAllCard struct {
 	AttachmentId string `json:"attachmentId"`
+	CardId       string `json:"cardId"`
 	FileName     string `json:"fileName"`
 	AuthorId     string `json:"authorId"`
 	AuthorName   string `json:"authorName"`

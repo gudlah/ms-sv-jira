@@ -5,7 +5,6 @@ import (
 	"ms-sv-jira/helpers"
 	"ms-sv-jira/models/dto"
 	"ms-sv-jira/models/entity"
-	"strconv"
 )
 
 func (usecase *JiraUsecaseImpl) GetAllSubTaskUsecase(kosong interface{}, idRequest string, bodyRequest dto.ReqDownstreamGetAllSubTask) (httpCode int, res dto.Res) {
@@ -34,56 +33,14 @@ func (usecase *JiraUsecaseImpl) GetAllSubTaskUsecase(kosong interface{}, idReque
 			httpCode, res = helpers.ResSuccess(true, "1003", "Data not found", kosong)
 		} else {
 			logUpstream.IsSuccess = 1
-			dataOutput := builDataSubTask(resStruct)
+			dataOutput := BuilDataSubTask(bodyRequest.CardKey, resStruct)
 			httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", dataOutput)
+			httpCode, res = usecase.InsertJiraSubTaskAction(kosong, dataOutput, httpCode, res)
 		}
 	}
 
 	paramInsertLogUpstream := helpers.BuildParamInsertLogUpstream(logUpstream, httpCode, res, kosong)
 	httpCode, res = usecase.LogUsecase.InsertLogUpstreamUsecase(paramInsertLogUpstream)
 
-	return
-}
-
-func builDataSubTask(dataUpstream dto.ResUpstreamGetAllSubTask) (dataOutput []dto.ResDownstreamGetAllSubTask) {
-	dataOutput = make([]dto.ResDownstreamGetAllSubTask, dataUpstream.Total)
-	for index, subtask := range dataUpstream.Issues {
-		field := subtask.Fields
-		priorityIdInt, _ := strconv.Atoi(field.Priority.ID)
-		dataOutput[index] = dto.ResDownstreamGetAllSubTask{
-			SubTaskId:          subtask.ID,
-			SubTaskKey:         subtask.Key,
-			SubTaskTitle:       field.Summary,
-			StatusId:           field.Status.ID,
-			StatusName:         field.Status.Name,
-			PriorityId:         priorityIdInt,
-			PriorityName:       field.Priority.Name,
-			Created:            field.Created,
-			Updated:            field.Updated,
-			Resolved:           field.Resolutiondate,
-			AssigneeId:         field.Assignee.AccountID,
-			AssigneeName:       field.Assignee.DisplayName,
-			CreatorId:          field.Creator.AccountID,
-			CreatorName:        field.Creator.DisplayName,
-			ReporterId:         field.Reporter.AccountID,
-			ReporterName:       field.Reporter.DisplayName,
-			SubTaskDescription: buildDescription(field.Description),
-		}
-	}
-	return
-}
-
-func buildDescription(dataDescription dto.DescriptionUpstreamGetAllSubTask) (outputDescription string) {
-	if dataDescription.Type != "" {
-		for _, descriptionContent := range dataDescription.Content {
-			if descriptionContent.Type == "paragraph" {
-				for _, valueDescriptionContent := range descriptionContent.Content {
-					if valueDescriptionContent.Type == "text" {
-						outputDescription = valueDescriptionContent.Text
-					}
-				}
-			}
-		}
-	}
 	return
 }

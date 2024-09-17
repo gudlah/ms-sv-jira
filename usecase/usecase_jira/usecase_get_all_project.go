@@ -18,5 +18,6 @@ func (usecase *JiraUsecaseImpl) GetAllProjectUsecase(kosong interface{}, idReque
 
 	dataOutput := usecase.BuildDataOutputGetAllProjectAction(dataProject, dataBoard)
 	httpCode, res = helpers.ResSuccess(true, "0000", "Successfuly", dataOutput)
+	httpCode, res = usecase.InsertJiraProjectAction(kosong, dataOutput, httpCode, res)
 	return
 }

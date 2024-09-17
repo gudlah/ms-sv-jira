@@ -16,7 +16,8 @@ func (usecase *JiraUsecaseImpl) GetAllCardUsecase(kosong interface{}, idRequest 
 		return
 	}
 
-	dataOutput := usecase.BuildDataOuputGetAllCardAction(dataColumn, dataCard)
+	dataOutput := usecase.BuildDataOuputGetAllCardAction(bodyRequest.SprintId, dataColumn, dataCard)
 	httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", dataOutput)
+	httpCode, res = usecase.InsertJiraColumnAction(kosong, dataOutput, httpCode, res)
 	return
 }

@@ -5,7 +5,6 @@ import (
 	"ms-sv-jira/helpers"
 	"ms-sv-jira/models/dto"
 	"ms-sv-jira/models/entity"
-	"strconv"
 )
 
 func (usecase *JiraUsecaseImpl) GetAllPriorityUsecase(kosong interface{}, idRequest string) (httpCode int, res dto.Res) {
@@ -24,21 +23,14 @@ func (usecase *JiraUsecaseImpl) GetAllPriorityUsecase(kosong interface{}, idRequ
 		logUpstream.IsSuccess = 0
 		httpCode, res = helpers.ResBackendError(kosong)
 	} else {
+		logUpstream.IsSuccess = 1
 		logUpstream.ResponsePayload = resUpstream.String()
 		resStruct := []dto.ResUpstreamGetAllPriority{}
 		json.Unmarshal(resUpstream.Body(), &resStruct)
 
-		logUpstream.IsSuccess = 1
-		dataOutput := make([]dto.ResDownstreamGetAllPriority, len(resStruct))
-		for indexPriority, priority := range resStruct {
-			priorityIdInt, _ := strconv.Atoi(priority.Id)
-			dataOutput[indexPriority] = dto.ResDownstreamGetAllPriority{
-				PriorityId:          priorityIdInt,
-				PriorityName:        priority.Name,
-				PriorityDescription: priority.Description,
-			}
-		}
+		dataOutput := BuildDataPriority(resStruct)
 		httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", dataOutput)
+		httpCode, res = usecase.InsertJiraPriorityAction(kosong, dataOutput, httpCode, res)
 	}
 
 	paramInsertLogUpstream := helpers.BuildParamInsertLogUpstream(logUpstream, httpCode, res, kosong)
