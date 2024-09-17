@@ -1,6 +1,6 @@
 package entity
 
-type Users struct {
+type ServiceUsers struct {
 	Id       string `json:"id" gorm:"type:varchar;primary_key"`
 	Username string `json:"username" gorm:"type:varchar(100)"`
 	Password string `json:"password" gorm:"type:varchar(255)"`

@@ -4,10 +4,10 @@ import (
 	"ms-sv-jira/models/entity"
 )
 
-func (repository *DatabaseRepositoryImpl) GetUser(username string) (res entity.Users, err error) {
+func (repository *DatabaseRepositoryImpl) GetServiceUserRepository(username string) (res entity.ServiceUsers, err error) {
 	err = repository.Database.
 		Select("*").
-		Model(&entity.Users{}).
+		Model(&entity.ServiceUsers{}).
 		Where("username = ? AND is_active = 1", username).
 		Scan(&res).
 		Error

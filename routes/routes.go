@@ -37,7 +37,8 @@ func NewRouter(routerParam RouterParam) *gin.Engine {
 	// }
 	rootRouter := router.Group("/api/v1").Use(middleware.BasicAuth(routerParam.AuthDelivery, routerParam.LogUsecase))
 	{
-		rootRouter.POST("/projects", routerParam.JiraDelivery.GetAllProjectDelivery)
+		rootRouter.GET("/users", routerParam.JiraDelivery.GetAllJiraUserDelivery)
+		rootRouter.GET("/projects", routerParam.JiraDelivery.GetAllJiraProjectDelivery)
 	}
 	router.NoRoute(routerParam.AuthDelivery.PageNotFoundDelivery)
 

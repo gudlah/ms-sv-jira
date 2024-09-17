@@ -5,7 +5,6 @@ import (
 	"ms-sv-jira/delivery/delivery_auth"
 	"ms-sv-jira/delivery/delivery_jira"
 	"ms-sv-jira/repository/repository_database"
-	"ms-sv-jira/repository/repository_external"
 	"ms-sv-jira/routes"
 	"ms-sv-jira/usecase/usecase_auth"
 	"ms-sv-jira/usecase/usecase_jira"
@@ -25,18 +24,16 @@ func main() {
 	os.Setenv("TZ", "Asia/Jakarta")
 	konfigurasi := config.Config
 	database := config.ConnectDatabase(konfigurasi.Database)
-	restyConfig := config.RestyConfig(konfigurasi.Jira)
 	validate := validator.New()
 
 	databaseRepository := repository_database.NewDatabaseRepository(database, konfigurasi.MinuteQueryFail)
-	externalRepository := repository_external.NewExternalRepository(restyConfig, konfigurasi.Jira)
 
 	logUsecase := usecase_log.NewLogUsecase(databaseRepository)
 
 	authUsecase := usecase_auth.NewAuthUsecase(databaseRepository, logUsecase)
 	authDelivery := delivery_auth.NewAuthDelivery(authUsecase, logUsecase, validate)
 
-	jiraUsecase := usecase_jira.NewJiraUsecase(externalRepository, logUsecase)
+	jiraUsecase := usecase_jira.NewJiraUsecase(databaseRepository, logUsecase)
 	jiraDelivery := delivery_jira.NewJiraDelivery(authUsecase, jiraUsecase, logUsecase, validate)
 
 	routerParam := RouterParam{

@@ -6,7 +6,7 @@ import (
 )
 
 func (usecase *AuthUsecaseImpl) LoginUsecase(kosong interface{}, loginRequest dto.ReqLogin) (httpCode int, res dto.Res, idUser string) {
-	user, err := usecase.DatabaseRepository.GetUser(loginRequest.Username)
+	user, err := usecase.DatabaseRepository.GetServiceUserRepository(loginRequest.Username)
 	if err != nil {
 		httpCode, res = helpers.ResGeneralSystemError(kosong)
 	} else if user.Id == "" {

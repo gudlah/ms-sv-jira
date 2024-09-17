@@ -8,7 +8,7 @@ import (
 	"go.elastic.co/apm"
 )
 
-func (delivery *JiraDeliveryImpl) GetAllProjectDelivery(ginContext *gin.Context) {
+func (delivery *JiraDeliveryImpl) GetAllJiraProjectDelivery(ginContext *gin.Context) {
 	idRequest, _, _, transaksi, _, _ := helpers.ConfigInit(ginContext)
 	kosong := make([]dto.ResDownstreamGetAllProject, 0)
 
@@ -19,7 +19,7 @@ func (delivery *JiraDeliveryImpl) GetAllProjectDelivery(ginContext *gin.Context)
 	var response dto.Res
 	var httpCode int
 
-	httpCode, response = delivery.JiraUsecase.GetAllProjectUsecase(kosong, idRequest)
+	httpCode, response = delivery.JiraUsecase.GetAllJiraProjectUsecase(kosong)
 
 	activityLogParam := helpers.BuildActivityLogParam(idRequest, "", httpCode, kosong, ginContext, response)
 	httpCode, response = delivery.LogUsecase.InsertLogActivityUsecase(activityLogParam)
