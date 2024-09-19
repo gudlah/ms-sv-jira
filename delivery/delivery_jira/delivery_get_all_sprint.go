@@ -32,7 +32,7 @@ func (delivery *JiraDeliveryImpl) GetAllSprintDelivery(ginContext *gin.Context) 
 		if err != nil {
 			httpCode, res = helpers.ResInvalidValue(kosong)
 		} else {
-			httpCode, res = delivery.JiraUsecase.GetAllSprintUsecase(kosong, idRequest, reqStruct)
+			httpCode, res, _ = delivery.JiraUsecase.GetAllSprintUsecase(kosong, idRequest, reqStruct)
 		}
 	}
 

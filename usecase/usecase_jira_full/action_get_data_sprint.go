@@ -1,4 +1,4 @@
-package usecase_jira
+package usecase_jira_full
 
 import (
 	"encoding/json"
@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func (usecase *JiraUsecaseImpl) GetAllSprintUsecase(kosong interface{}, idRequest string, bodyRequest dto.ReqDownstreamGetAllSprint) (httpCode int, res dto.Res, dataOutput []dto.ResDownstreamGetAllSprint) {
+func (usecase *JiraFullUsecaseImpl) GetDataSprintAction(kosong interface{}, idRequest string, boardId int) (httpCode int, res dto.Res, dataOutput []dto.SprintDownstreamGetAllFull) {
 	logUpstream := entity.UpstreamServiceRequestLog{
 		Id:               helpers.GenerateUUID(),
 		IdRequest:        idRequest,
@@ -16,8 +16,8 @@ func (usecase *JiraUsecaseImpl) GetAllSprintUsecase(kosong interface{}, idReques
 		RequestTimestamp: helpers.Now(),
 	}
 
-	boardId := strconv.Itoa(bodyRequest.BoardId)
-	resUpstream, err := usecase.ExternalRepository.GetAllSprintRepository(boardId)
+	boardIdString := strconv.Itoa(boardId)
+	resUpstream, err := usecase.ExternalRepository.GetAllSprintRepository(boardIdString)
 	logUpstream.Url = resUpstream.Request.URL
 	logUpstream.ResponseTimestamp = helpers.Now()
 
@@ -35,8 +35,10 @@ func (usecase *JiraUsecaseImpl) GetAllSprintUsecase(kosong interface{}, idReques
 			httpCode, res = helpers.ResSuccess(true, "1003", "Data not found", kosong)
 		} else {
 			logUpstream.IsSuccess = 1
-			dataOutput = BuildDataSprint(resStruct)
-			httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", dataOutput)
+			httpCode, res, dataOutput = usecase.BuildDataSprint(kosong, idRequest, boardId, resStruct)
+			if res.ResponseCode == "0000" {
+				httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", dataOutput)
+			}
 			httpCode, res = usecase.InsertJiraSprintAction(kosong, dataOutput, httpCode, res)
 		}
 	}

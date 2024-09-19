@@ -3,6 +3,7 @@ package routes
 import (
 	"ms-sv-jira/delivery/delivery_auth"
 	"ms-sv-jira/delivery/delivery_jira"
+	"ms-sv-jira/delivery/delivery_jira_full"
 	"ms-sv-jira/middleware"
 	"ms-sv-jira/usecase/usecase_log"
 
@@ -15,9 +16,10 @@ import (
 )
 
 type RouterParam struct {
-	LogUsecase   usecase_log.LogUsecase
-	AuthDelivery delivery_auth.AuthDelivery
-	JiraDelivery delivery_jira.JiraDelivery
+	LogUsecase       usecase_log.LogUsecase
+	AuthDelivery     delivery_auth.AuthDelivery
+	JiraDelivery     delivery_jira.JiraDelivery
+	JiraFullDelivery delivery_jira_full.JiraFullDelivery
 }
 
 func NewRouter(routerParam RouterParam) *gin.Engine {
@@ -43,6 +45,7 @@ func NewRouter(routerParam RouterParam) *gin.Engine {
 		rootRouter.GET("/priorities", routerParam.JiraDelivery.GetAllPriorityDelivery)
 		rootRouter.POST("/cards", routerParam.JiraDelivery.GetAllCardDelivery)
 		rootRouter.POST("/subtasks", routerParam.JiraDelivery.GetAllSubTaskDelivery)
+		rootRouter.GET("/all", routerParam.JiraFullDelivery.GetAllFullDelivery)
 	}
 	router.NoRoute(routerParam.AuthDelivery.PageNotFoundDelivery)
 

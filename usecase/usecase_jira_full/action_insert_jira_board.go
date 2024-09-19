@@ -1,4 +1,4 @@
-package usecase_jira
+package usecase_jira_full
 
 import (
 	"ms-sv-jira/helpers"
@@ -6,7 +6,7 @@ import (
 	"ms-sv-jira/models/entity"
 )
 
-func (usecase *JiraUsecaseImpl) InsertJiraBoardAction(kosong interface{}, boards []dto.BoardDownstreamGetAllProject, httpCodeAsal int, resAsal dto.Res) (httpCode int, res dto.Res) {
+func (usecase *JiraFullUsecaseImpl) InsertJiraBoardAction(kosong interface{}, boards []dto.BoardDownstreamGetAllFull, httpCodeAsal int, resAsal dto.Res) (httpCode int, res dto.Res) {
 	dataBoards := []entity.JiraBoards{}
 	var errBoard int
 	for _, board := range boards {
@@ -36,10 +36,10 @@ func (usecase *JiraUsecaseImpl) InsertJiraBoardAction(kosong interface{}, boards
 		if err != nil {
 			httpCode, res = helpers.ResGeneralSystemError(kosong)
 		} else {
-			httpCode, res = httpCodeAsal, resAsal
+			httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", kosong)
 		}
 	} else {
-		httpCode, res = httpCodeAsal, resAsal
+		httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", kosong)
 	}
 
 	return

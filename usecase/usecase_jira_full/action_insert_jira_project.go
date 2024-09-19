@@ -1,4 +1,4 @@
-package usecase_jira
+package usecase_jira_full
 
 import (
 	"ms-sv-jira/helpers"
@@ -6,7 +6,7 @@ import (
 	"ms-sv-jira/models/entity"
 )
 
-func (usecase *JiraUsecaseImpl) InsertJiraProjectAction(kosong interface{}, projects []dto.ResDownstreamGetAllProject, httpCodeAsal int, resAsal dto.Res) (httpCode int, res dto.Res) {
+func (usecase *JiraFullUsecaseImpl) InsertJiraProjectAction(kosong interface{}, projects []dto.ResDownstreamGetAllFull, httpCodeAsal int, resAsal dto.Res) (httpCode int, res dto.Res) {
 	dataProjects := []entity.JiraProjects{}
 	var errProject int
 	for _, project := range projects {
@@ -40,17 +40,6 @@ func (usecase *JiraUsecaseImpl) InsertJiraProjectAction(kosong interface{}, proj
 		}
 	} else {
 		httpCode, res = httpCodeAsal, resAsal
-	}
-
-	var errInsertBoard int
-	for _, project := range projects {
-		_, resBoard := usecase.InsertJiraBoardAction(kosong, project.Boards, httpCode, res)
-		if resBoard.ResponseCode != "0000" {
-			errInsertBoard += 1
-		}
-	}
-	if errInsertBoard > 1 {
-		httpCode, res = helpers.ResGeneralSystemError(kosong)
 	}
 
 	return

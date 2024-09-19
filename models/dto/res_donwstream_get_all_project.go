@@ -10,6 +10,7 @@ type ResDownstreamGetAllProject struct {
 
 type BoardDownstreamGetAllProject struct {
 	BoardId   int    `json:"boardId"`
+	ProjectId string `json:"projectId"`
 	BoardName string `json:"boardName"`
 	BoardType string `json:"boardType"`
 }
