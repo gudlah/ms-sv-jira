@@ -1,11 +1,99 @@
 {
 	"info": {
 		"_postman_id": "572a410f-2ef7-4484-bdb8-6b7f2c33566d",
-		"name": "ms-sv-jira",
+		"name": "ms-sv-jira (integrator)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23787187"
 	},
 	"item": [
+		{
+			"name": "All",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hostLokal}}/all",
+					"host": [
+						"{{hostLokal}}"
+					],
+					"path": [
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hostLokal}}/users",
+					"host": [
+						"{{hostLokal}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Projects",
 			"request": {
@@ -24,7 +112,7 @@
 						}
 					]
 				},
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"url": {
 					"raw": "{{hostLokal}}/projects",
@@ -33,6 +121,38 @@
 					],
 					"path": [
 						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Priorities",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostLokal}}/priorities",
+					"host": [
+						"{{hostLokal}}"
+					],
+					"path": [
+						"priorities"
 					]
 				}
 			},
@@ -142,7 +262,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cardId\": \"10000\"\r\n}",
+					"raw": "{\r\n    \"cardKey\": \"10000\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
