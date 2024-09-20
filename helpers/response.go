@@ -11,15 +11,6 @@ func ResSuccess(isSuccess bool, responseCode string, message string, data interf
 	}
 }
 
-func ResReached(responseCode string, message string, kosong interface{}) (int, dto.Res) {
-	return 429, dto.Res{
-		Success:      false,
-		ResponseCode: responseCode,
-		Message:      message,
-		Data:         kosong,
-	}
-}
-
 func ResInvalidCredential(kosong interface{}) (int, dto.Res) {
 	return 401, dto.Res{
 		Success:      false,

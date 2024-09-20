@@ -1,18 +1,19 @@
 package routes
 
 import (
+	"ms-sv-jira/config"
 	"ms-sv-jira/delivery/delivery_auth"
 	"ms-sv-jira/delivery/delivery_jira"
 	"ms-sv-jira/delivery/delivery_jira_full"
 	"ms-sv-jira/middleware"
 	"ms-sv-jira/usecase/usecase_log"
 
-	// _ "ms-sv-jira/swagger"
+	_ "ms-sv-jira/swagger"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	// swaggerFiles "github.com/swaggo/files"
-	// ginSwagger "github.com/swaggo/gin-swagger"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 type RouterParam struct {
@@ -33,10 +34,10 @@ func NewRouter(routerParam RouterParam) *gin.Engine {
 		AllowCredentials: true,
 	}))
 
-	// ginMode := config.Config.GinMode
-	// if ginMode == "debug" {
-	// 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, ginSwagger.DefaultModelsExpandDepth(-1)))
-	// }
+	ginMode := config.Config.GinMode
+	if ginMode == "debug" {
+		router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, ginSwagger.DefaultModelsExpandDepth(-1)))
+	}
 	rootRouter := router.Group("/api/v1").Use(middleware.BasicAuth(routerParam.AuthDelivery, routerParam.LogUsecase))
 	{
 		rootRouter.GET("/users", routerParam.JiraDelivery.GetAllUserDelivery)
