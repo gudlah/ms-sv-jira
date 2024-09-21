@@ -9,12 +9,17 @@ import (
 func (usecase *JiraUsecaseImpl) InsertJiraColumnAction(kosong interface{}, columns []dto.ResDownstreamGetAllCard, httpCodeAsal int, resAsal dto.Res) (httpCode int, res dto.Res) {
 	dataColumns := []entity.JiraColumns{}
 	var errGetColumn int
-	for _, column := range columns {
+	jumlahColumns := len(columns)
+	for indexColumn, column := range columns {
 		cekColumn, err := usecase.DatabaseRepository.GetJiraColumnRepository(column.ColumnId)
 		dataInsertColumn := entity.JiraColumns{
 			ColumnID:   column.ColumnId,
 			ColumnName: column.ColumnName,
 			SprintID:   column.SprintId,
+			Persen:     0,
+		}
+		if indexColumn > 0 {
+			dataInsertColumn.Persen = float32(indexColumn+1) / float32(jumlahColumns)
 		}
 		if err != nil {
 			errGetColumn += 1
