@@ -15,5 +15,6 @@ type JiraCards struct {
 	ReporterID      string    `json:"reporter_id,omitempty" gorm:"column:reporter_id;size:100"`
 	CardCreated     time.Time `json:"card_created,omitempty" gorm:"column:card_created"`
 	CardUpdated     time.Time `json:"card_updated,omitempty" gorm:"column:card_updated"`
+	CardStarted     time.Time `json:"card_started,omitempty" gorm:"column:card_started"`
 	CardResolved    time.Time `json:"card_resolved,omitempty" gorm:"column:card_resolved"`
 }

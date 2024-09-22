@@ -13,4 +13,5 @@ type ExternalRepository interface {
 	GetAllColumnRepository(boardId string) (*resty.Response, error)
 	GetAllCardRepository(sprintId string) (*resty.Response, error)
 	GetAllSubtaskRepository(cardKey string) (*resty.Response, error)
+	GetAllChangelogRepository(issueId string) (*resty.Response, error)
 }

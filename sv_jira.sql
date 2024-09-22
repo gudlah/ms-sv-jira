@@ -47,13 +47,15 @@ CREATE TABLE `jira_cards` (
   `reporter_id` varchar(100) DEFAULT NULL,
   `card_created` datetime DEFAULT NULL,
   `card_updated` datetime DEFAULT NULL,
+  `card_started` datetime DEFAULT NULL,
   `card_resolved` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `jira_columns` (
   `column_id` varchar(10) NOT NULL,
   `sprint_id` varchar(10) DEFAULT NULL,
-  `column_name` varchar(100) DEFAULT NULL
+  `column_name` varchar(100) DEFAULT NULL,
+  `persen` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `jira_comments` (
@@ -102,6 +104,7 @@ CREATE TABLE `jira_sub_tasks` (
   `assignee_id` varchar(100) DEFAULT NULL,
   `sub_task_created` datetime DEFAULT NULL,
   `sub_task_updated` datetime DEFAULT NULL,
+  `sub_task_started` datetime DEFAULT NULL,
   `sub_task_resolved` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -166,35 +169,3 @@ ALTER TABLE `service_users` ADD PRIMARY KEY (`id`);
 ALTER TABLE `symbols` ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `upstream_service_request_log` ADD PRIMARY KEY (`id`);
-
-INSERT INTO `service_users` (`id`, `username`, `password`, `is_active`, `created_at`) VALUES
-('b0577d97-3a3d-44c9-a82f-0ff348ca951d', 'svi', '$2a$12$HUUsrBqls5p8Sh3TxmKV0uPQjTsXa2p.O9Uob2G6iJFa.g/z5mAJu', 1, '2024-09-09 12:32:01');
-
-INSERT INTO `symbols` (`id`, `symbol`) VALUES
-(1, '`'),
-(2, '--'),
-(6, '%'),
-(7, ';'),
-(8, '+'),
-(9, '||'),
-(10, '='),
-(11, '>'),
-(12, '<'),
-(13, '<='),
-(14, '>='),
-(15, '=='),
-(16, '<>'),
-(17, '!='),
-(19, '^^'),
-(20, '&&'),
-(21, '{'),
-(22, '}'),
-(23, '('),
-(24, ')'),
-(27, "'"),
-(28, '"'),
-(29, '?'),
-(30, '!'),
-(31, '['),
-(32, ']'),
-(33, '*');
