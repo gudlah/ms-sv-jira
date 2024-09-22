@@ -1,0 +1,1400 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/v1/all": {
+            "get": {
+                "description": "Get All Full",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Jira"
+                ],
+                "summary": "Get All Full",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "Basic \u003cAdd access token here\u003e",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGetAllFullSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidValue"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidCredential"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerIpBlocked"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGeneralSystemError"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerBackendError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/cards": {
+            "post": {
+                "description": "Get Cards",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Jira"
+                ],
+                "summary": "Get Cards",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "Basic \u003cAdd access token here\u003e",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Body Request",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ReqDownstreamGetAllCard"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGetAlCardSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidValue"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidCredential"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerIpBlocked"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGeneralSystemError"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerBackendError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/priorities": {
+            "get": {
+                "description": "Get All Priority",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Jira"
+                ],
+                "summary": "Get All Priority",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "Basic \u003cAdd access token here\u003e",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGetAllPrioritiesSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidValue"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidCredential"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerIpBlocked"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGeneralSystemError"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerBackendError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/projects": {
+            "get": {
+                "description": "Get All Project",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Jira"
+                ],
+                "summary": "Get All Project",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "Basic \u003cAdd access token here\u003e",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGetAllProjectSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidValue"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidCredential"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerIpBlocked"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGeneralSystemError"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerBackendError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/sprints": {
+            "post": {
+                "description": "Get Sprints",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Jira"
+                ],
+                "summary": "Get Sprints",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "Basic \u003cAdd access token here\u003e",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Body Request",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ReqDownstreamGetAllSprint"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGetAllSprintSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidValue"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidCredential"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerIpBlocked"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGeneralSystemError"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerBackendError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/subtaks": {
+            "post": {
+                "description": "Get Sub Tasks",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Jira"
+                ],
+                "summary": "Get Sub Tasks",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "Basic \u003cAdd access token here\u003e",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Body Request",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ReqDownstreamGetAllSubTask"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGetAllSubTaskSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidValue"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidCredential"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerIpBlocked"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGeneralSystemError"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerBackendError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users": {
+            "get": {
+                "description": "Get All User",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Jira"
+                ],
+                "summary": "Get All User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "Basic \u003cAdd access token here\u003e",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGetAllUserSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidValue"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerInvalidCredential"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerIpBlocked"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerGeneralSystemError"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SwaggerBackendError"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.ReqDownstreamGetAllCard": {
+            "type": "object",
+            "required": [
+                "boardId",
+                "sprintId"
+            ],
+            "properties": {
+                "boardId": {
+                    "type": "integer"
+                },
+                "sprintId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.ReqDownstreamGetAllSprint": {
+            "type": "object",
+            "required": [
+                "boardId"
+            ],
+            "properties": {
+                "boardId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.ReqDownstreamGetAllSubTask": {
+            "type": "object",
+            "required": [
+                "cardKey"
+            ],
+            "properties": {
+                "cardKey": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.SwaggerBackendError": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Backend error"
+                },
+                "responseCode": {
+                    "type": "string",
+                    "example": "2002"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": false
+                }
+            }
+        },
+        "dto.SwaggerGeneralSystemError": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "General system error"
+                },
+                "responseCode": {
+                    "type": "string",
+                    "example": "2001"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": false
+                }
+            }
+        },
+        "dto.SwaggerGetAlCardSuccess": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "cards": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "assigneName": {
+                                        "type": "string",
+                                        "example": "Taofik Rakhman Sudrajat"
+                                    },
+                                    "assigneeId": {
+                                        "type": "string",
+                                        "example": "6212f56f468c2e00716df01c"
+                                    },
+                                    "attachment": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "attachmentId": {
+                                                    "type": "string",
+                                                    "example": "10000"
+                                                },
+                                                "authorId": {
+                                                    "type": "string",
+                                                    "example": "6212f56f468c2e00716df01c"
+                                                },
+                                                "authorName": {
+                                                    "type": "string",
+                                                    "example": "Taofik Rakhman Sudrajat"
+                                                },
+                                                "cardId": {
+                                                    "type": "string",
+                                                    "example": "10000"
+                                                },
+                                                "created": {
+                                                    "type": "string",
+                                                    "example": "2024-09-06 11:06:47"
+                                                },
+                                                "fileName": {
+                                                    "type": "string",
+                                                    "example": "Modul 3 Pengembangan TI.pdf"
+                                                },
+                                                "url": {
+                                                    "type": "string",
+                                                    "example": "https://it-team-sharingvision.atlassian.net/rest/api/2/attachment/content/10000"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "cardId": {
+                                        "type": "string",
+                                        "example": "10000"
+                                    },
+                                    "cardKey": {
+                                        "type": "string",
+                                        "example": "SV-1"
+                                    },
+                                    "cardTitle": {
+                                        "type": "string",
+                                        "example": "Parsing-Task"
+                                    },
+                                    "cardType": {
+                                        "type": "string",
+                                        "example": "Task"
+                                    },
+                                    "cardTypeId": {
+                                        "type": "string",
+                                        "example": "10001"
+                                    },
+                                    "columnId": {
+                                        "type": "string",
+                                        "example": "10001"
+                                    },
+                                    "comments": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "authorId": {
+                                                    "type": "string",
+                                                    "example": "6212f56f468c2e00716df01c"
+                                                },
+                                                "authorName": {
+                                                    "type": "string",
+                                                    "example": "Taofik Rakhman Sudrajat"
+                                                },
+                                                "body": {
+                                                    "type": "string",
+                                                    "example": "THIS IS COMMENT ASDASDASDASDASDASDAS"
+                                                },
+                                                "cardId": {
+                                                    "type": "string",
+                                                    "example": "10000"
+                                                },
+                                                "commentId": {
+                                                    "type": "string",
+                                                    "example": "10000"
+                                                },
+                                                "created": {
+                                                    "type": "string",
+                                                    "example": "2024-09-10 18:09:33"
+                                                },
+                                                "updated": {
+                                                    "type": "string",
+                                                    "example": "2024-09-10 18:09:33"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "created": {
+                                        "type": "string",
+                                        "example": "2024-09-06 11:04:14"
+                                    },
+                                    "creatorId": {
+                                        "type": "string",
+                                        "example": "6212f56f468c2e00716df01c"
+                                    },
+                                    "creatorName": {
+                                        "type": "string",
+                                        "example": "Taofik Rakhman Sudrajat"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Something here is a description hehe…"
+                                    },
+                                    "priorityId": {
+                                        "type": "integer",
+                                        "example": 3
+                                    },
+                                    "priorityName": {
+                                        "type": "string",
+                                        "example": "Medium"
+                                    },
+                                    "reporterId": {
+                                        "type": "string",
+                                        "example": "6212f56f468c2e00716df01c"
+                                    },
+                                    "reporterName": {
+                                        "type": "string",
+                                        "example": "Taofik Rakhman Sudrajat"
+                                    },
+                                    "resolved": {
+                                        "type": "string",
+                                        "example": "2024-09-14 18:53:22"
+                                    },
+                                    "updated": {
+                                        "type": "string",
+                                        "example": "2024-09-10 18:53:22"
+                                    }
+                                }
+                            }
+                        },
+                        "columnId": {
+                            "type": "string",
+                            "example": "10001"
+                        },
+                        "columnName": {
+                            "type": "string",
+                            "example": "In Progress"
+                        },
+                        "sprintId": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Successfully"
+                },
+                "responseCode": {
+                    "type": "string",
+                    "example": "0000"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "dto.SwaggerGetAllFullSuccess": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "boards": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "boardId": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "boardName": {
+                                        "type": "string",
+                                        "example": "SCRUM board"
+                                    },
+                                    "boardType": {
+                                        "type": "string",
+                                        "example": "simple"
+                                    },
+                                    "projectId": {
+                                        "type": "string",
+                                        "example": "10000"
+                                    },
+                                    "sprints": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "boardId": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "columns": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "cards": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "assigneeId": {
+                                                                            "type": "string",
+                                                                            "example": "712020:1af3618d-09c5-40f0-991e-23e644b9f220"
+                                                                        },
+                                                                        "assigneeName": {
+                                                                            "type": "string",
+                                                                            "example": "Bagus Anjar Sadewa"
+                                                                        },
+                                                                        "attachment": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "attachmentId": {
+                                                                                        "type": "string",
+                                                                                        "example": "10002"
+                                                                                    },
+                                                                                    "authorId": {
+                                                                                        "type": "string",
+                                                                                        "example": "712020:1af3618d-09c5-40f0-991e-23e644b9f220"
+                                                                                    },
+                                                                                    "authorName": {
+                                                                                        "type": "string",
+                                                                                        "example": "Bagus Anjar Sadewa"
+                                                                                    },
+                                                                                    "cardId": {
+                                                                                        "type": "string",
+                                                                                        "example": "10032"
+                                                                                    },
+                                                                                    "created": {
+                                                                                        "type": "string",
+                                                                                        "example": "2024-09-12 02:51:42"
+                                                                                    },
+                                                                                    "fileName": {
+                                                                                        "type": "string",
+                                                                                        "example": "New Project.png"
+                                                                                    },
+                                                                                    "url": {
+                                                                                        "type": "string",
+                                                                                        "example": "https://it-team-sharingvision.atlassian.net/rest/api/2/attachment/content/10002"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "cardId": {
+                                                                            "type": "string",
+                                                                            "example": "10032"
+                                                                        },
+                                                                        "cardKey": {
+                                                                            "type": "string",
+                                                                            "example": "SV-11"
+                                                                        },
+                                                                        "cardTitle": {
+                                                                            "type": "string",
+                                                                            "example": "Development Fitur : Cek Hari Libur"
+                                                                        },
+                                                                        "cardType": {
+                                                                            "type": "string",
+                                                                            "example": "Task"
+                                                                        },
+                                                                        "cardTypeId": {
+                                                                            "type": "string",
+                                                                            "example": "10001"
+                                                                        },
+                                                                        "columnId": {
+                                                                            "type": "string",
+                                                                            "example": "10001"
+                                                                        },
+                                                                        "comments": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "authorId": {
+                                                                                        "type": "string",
+                                                                                        "example": "712020:1af3618d-09c5-40f0-991e-23e644b9f220"
+                                                                                    },
+                                                                                    "authorName": {
+                                                                                        "type": "string",
+                                                                                        "example": "Bagus Anjar Sadewa"
+                                                                                    },
+                                                                                    "body": {
+                                                                                        "type": "string",
+                                                                                        "example": "This is a comment"
+                                                                                    },
+                                                                                    "cardId": {
+                                                                                        "type": "string",
+                                                                                        "example": "10032"
+                                                                                    },
+                                                                                    "commentId": {
+                                                                                        "type": "string",
+                                                                                        "example": "12345"
+                                                                                    },
+                                                                                    "created": {
+                                                                                        "type": "string",
+                                                                                        "example": "2024-09-12 02:51:42"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "created": {
+                                                                            "type": "string",
+                                                                            "example": "2024-09-08 03:28:23"
+                                                                        },
+                                                                        "description": {
+                                                                            "type": "string",
+                                                                            "example": "Task details here"
+                                                                        },
+                                                                        "priorityId": {
+                                                                            "type": "integer",
+                                                                            "example": 3
+                                                                        },
+                                                                        "priorityName": {
+                                                                            "type": "string",
+                                                                            "example": "Medium"
+                                                                        },
+                                                                        "resolved": {
+                                                                            "type": "string",
+                                                                            "example": "2024-09-19 02:30:07"
+                                                                        },
+                                                                        "subTasks": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "cardKey": {
+                                                                                        "type": "string",
+                                                                                        "example": "SV-11"
+                                                                                    },
+                                                                                    "created": {
+                                                                                        "type": "string",
+                                                                                        "example": "2024-09-08 03:42:49"
+                                                                                    },
+                                                                                    "priorityId": {
+                                                                                        "type": "integer",
+                                                                                        "example": 3
+                                                                                    },
+                                                                                    "priorityName": {
+                                                                                        "type": "string",
+                                                                                        "example": "Medium"
+                                                                                    },
+                                                                                    "statusName": {
+                                                                                        "type": "string",
+                                                                                        "example": "To Do"
+                                                                                    },
+                                                                                    "subTaskId": {
+                                                                                        "type": "string",
+                                                                                        "example": "10045"
+                                                                                    },
+                                                                                    "subTaskKey": {
+                                                                                        "type": "string",
+                                                                                        "example": "SV-24"
+                                                                                    },
+                                                                                    "subTaskTitle": {
+                                                                                        "type": "string",
+                                                                                        "example": "Collect LC Testing"
+                                                                                    },
+                                                                                    "updated": {
+                                                                                        "type": "string",
+                                                                                        "example": "2024-09-08 03:43:07"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "updated": {
+                                                                            "type": "string",
+                                                                            "example": "2024-09-16 02:30:07"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            "columnId": {
+                                                                "type": "string",
+                                                                "example": "10001"
+                                                            },
+                                                            "columnName": {
+                                                                "type": "string",
+                                                                "example": "In Progress"
+                                                            },
+                                                            "sprintId": {
+                                                                "type": "integer",
+                                                                "example": 1
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "createdDate": {
+                                                    "type": "string",
+                                                    "example": "2024-09-06 11:03:22"
+                                                },
+                                                "endDate": {
+                                                    "type": "string",
+                                                    "example": "2024-09-13 11:06:48"
+                                                },
+                                                "goal": {
+                                                    "type": "string",
+                                                    "example": "End the parsing"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "SCRUM Sprint 1"
+                                                },
+                                                "sprintId": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "startDate": {
+                                                    "type": "string",
+                                                    "example": "2024-09-06 11:06:01"
+                                                },
+                                                "state": {
+                                                    "type": "string",
+                                                    "example": "active"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "projectId": {
+                            "type": "string",
+                            "example": "10000"
+                        },
+                        "projectKey": {
+                            "type": "string",
+                            "example": "SV"
+                        },
+                        "projectName": {
+                            "type": "string",
+                            "example": "Parsing-API"
+                        },
+                        "projectTypeKey": {
+                            "type": "string",
+                            "example": "software"
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Successfully"
+                },
+                "responseCode": {
+                    "type": "string",
+                    "example": "0000"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "dto.SwaggerGetAllPrioritiesSuccess": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "priorityDescription": {
+                                "type": "string",
+                                "example": "This problem will block progress."
+                            },
+                            "priorityId": {
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "priorityName": {
+                                "type": "string",
+                                "example": "Highest"
+                            }
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Succesfully"
+                },
+                "responseCode": {
+                    "type": "string",
+                    "example": "1010"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": false
+                }
+            }
+        },
+        "dto.SwaggerGetAllProjectSuccess": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "boards": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "boardId": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "boardName": {
+                                            "type": "string",
+                                            "example": "SCRUM board"
+                                        },
+                                        "boardType": {
+                                            "type": "string",
+                                            "example": "simple"
+                                        },
+                                        "projectId": {
+                                            "type": "string",
+                                            "example": "10000"
+                                        }
+                                    }
+                                }
+                            },
+                            "projectId": {
+                                "type": "string",
+                                "example": "10000"
+                            },
+                            "projectKey": {
+                                "type": "string",
+                                "example": "SV"
+                            },
+                            "projectName": {
+                                "type": "string",
+                                "example": "Parsing-API"
+                            },
+                            "projectTypeKey": {
+                                "type": "string",
+                                "example": "software"
+                            }
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Successfully"
+                },
+                "responseCode": {
+                    "type": "string",
+                    "example": "0000"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "dto.SwaggerGetAllSprintSuccess": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "boardId": {
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "createdDate": {
+                                "type": "string",
+                                "example": "2024-09-06 11:03:22"
+                            },
+                            "endDate": {
+                                "type": "string",
+                                "example": "2024-09-13 11:06:48"
+                            },
+                            "goal": {
+                                "type": "string",
+                                "example": "End the parsing"
+                            },
+                            "name": {
+                                "type": "string",
+                                "example": "SCRUM Sprint 1"
+                            },
+                            "sprintId": {
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "startDate": {
+                                "type": "string",
+                                "example": "2024-09-06 11:06:01"
+                            },
+                            "state": {
+                                "type": "string",
+                                "example": "active"
+                            }
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Successfully"
+                },
+                "responseCode": {
+                    "type": "string",
+                    "example": "0000"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "dto.SwaggerGetAllSubTaskSuccess": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "assigneeId": {
+                                "type": "string",
+                                "example": "712020:1af3618d-09c5-40f0-991e-23e644b9f220"
+                            },
+                            "assigneeName": {
+                                "type": "string",
+                                "example": "Bagus Anjar Sadewa"
+                            },
+                            "cardKey": {
+                                "type": "string",
+                                "example": "SV-11"
+                            },
+                            "created": {
+                                "type": "string",
+                                "example": "2024-09-08 03:42:49"
+                            },
+                            "creatorId": {
+                                "type": "string",
+                                "example": "712020:1af3618d-09c5-40f0-991e-23e644b9f220"
+                            },
+                            "creatorName": {
+                                "type": "string",
+                                "example": "Bagus Anjar Sadewa"
+                            },
+                            "priorityId": {
+                                "type": "integer",
+                                "example": 3
+                            },
+                            "priorityName": {
+                                "type": "string",
+                                "example": "Medium"
+                            },
+                            "reporterId": {
+                                "type": "string",
+                                "example": "712020:1af3618d-09c5-40f0-991e-23e644b9f220"
+                            },
+                            "reporterName": {
+                                "type": "string",
+                                "example": "Bagus Anjar Sadewa"
+                            },
+                            "resolved": {
+                                "type": "string",
+                                "example": "2024-09-10 03:43:07"
+                            },
+                            "statusId": {
+                                "type": "string",
+                                "example": "10000"
+                            },
+                            "statusName": {
+                                "type": "string",
+                                "example": "To Do"
+                            },
+                            "subTaskDescription": {
+                                "type": "string",
+                                "example": "Lorem ipsum dolor"
+                            },
+                            "subTaskId": {
+                                "type": "string",
+                                "example": "10045"
+                            },
+                            "subTaskKey": {
+                                "type": "string",
+                                "example": "SV-24"
+                            },
+                            "subTaskTitle": {
+                                "type": "string",
+                                "example": "Collect LC Testing"
+                            },
+                            "updated": {
+                                "type": "string",
+                                "example": "2024-09-09 03:43:07"
+                            }
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Successfully"
+                },
+                "responseCode": {
+                    "type": "string",
+                    "example": "1009"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": false
+                }
+            }
+        },
+        "dto.SwaggerGetAllUserSuccess": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "accountId": {
+                                "type": "string",
+                                "example": "6212f56f468c2e00716df01c"
+                            },
+                            "active": {
+                                "type": "boolean",
+                                "example": true
+                            },
+                            "displayName": {
+                                "type": "string",
+                                "example": "Taofik Rakhman Sudrajat"
+                            },
+                            "emailAddress": {
+                                "type": "string",
+                                "example": "bagus.anjar@it.sharingvision.com"
+                            },
+                            "locale": {
+                                "type": "string",
+                                "example": "en_US"
+                            }
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Successfully"
+                },
+                "responseCode": {
+                    "type": "string",
+                    "example": "0000"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "dto.SwaggerInvalidCredential": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Invalid credential"
+                },
+                "responseCode": {
+                    "type": "string",
+                    "example": "1001"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": false
+                }
+            }
+        },
+        "dto.SwaggerInvalidValue": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Invalid value"
+                },
+                "responseCode": {
+                    "type": "string",
+                    "example": "1002"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": false
+                }
+            }
+        },
+        "dto.SwaggerIpBlocked": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "IP blocked"
+                },
+                "responseCode": {
+                    "type": "string",
+                    "example": "2004"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": false
+                }
+            }
+        }
+    }
+}
