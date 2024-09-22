@@ -15,5 +15,6 @@ type JiraSubTasks struct {
 	AssigneeID         string    `json:"assignee_id,omitempty" gorm:"column:assignee_id;size:100"`
 	SubTaskCreated     time.Time `json:"sub_task_created,omitempty" gorm:"column:sub_task_created"`
 	SubTaskUpdated     time.Time `json:"sub_task_updated,omitempty" gorm:"column:sub_task_updated"`
+	SubTaskStarted     time.Time `json:"sub_task_started,omitempty" gorm:"column:sub_task_started"`
 	SubTaskResolved    time.Time `json:"sub_task_resolved,omitempty" gorm:"column:sub_task_resolved"`
 }

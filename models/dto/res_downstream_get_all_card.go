@@ -17,6 +17,7 @@ type CardDownstreamGetAllCard struct {
 	Created      string                           `json:"created"`
 	Updated      string                           `json:"updated"`
 	Resolved     string                           `json:"resolved"`
+	Started      string                           `json:"started"`
 	PriorityId   int                              `json:"priorityId"`
 	PriorityName string                           `json:"priorityName"`
 	AssigneeId   string                           `json:"assigneeId"`
