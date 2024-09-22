@@ -8,9 +8,6 @@
 	"item": [
 		{
 			"name": "All",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -29,15 +26,6 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "{{hostLokal}}/all",
 					"host": [
@@ -52,9 +40,6 @@
 		},
 		{
 			"name": "Users",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -73,15 +58,6 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "{{hostLokal}}/users",
 					"host": [
@@ -262,7 +238,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cardKey\": \"10000\"\r\n}",
+					"raw": "{\r\n    \"cardKey\": \"SV-11\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func BuilDataSubTask(cardKey string, dataUpstream dto.ResUpstreamGetAllSubTask) (dataOutput []dto.SubTaskDownstreamGetAllFull) {
+func (usecase *JiraFullUsecaseImpl) BuilDataSubTask(kosong interface{}, idRequest, cardKey string, dataUpstream dto.ResUpstreamGetAllSubTask) (dataOutput []dto.SubTaskDownstreamGetAllFull) {
 	dataOutput = make([]dto.SubTaskDownstreamGetAllFull, dataUpstream.Total)
 	for index, subtask := range dataUpstream.Issues {
 		field := subtask.Fields
@@ -30,6 +30,7 @@ func BuilDataSubTask(cardKey string, dataUpstream dto.ResUpstreamGetAllSubTask) 
 			ReporterId:         field.Reporter.AccountID,
 			ReporterName:       field.Reporter.DisplayName,
 			SubTaskDescription: BuildDataSubTaskDescription(field.Description),
+			Started:            usecase.GetStartDate(kosong, idRequest, subtask.ID),
 		}
 	}
 	return

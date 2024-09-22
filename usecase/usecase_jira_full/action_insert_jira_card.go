@@ -25,6 +25,7 @@ func (usecase *JiraFullUsecaseImpl) InsertJiraCardAction(kosong interface{}, car
 			CardCreated:     helpers.KonversiTanggalDb(card.Created),
 			CardUpdated:     helpers.KonversiTanggalDb(card.Updated),
 			CardResolved:    helpers.KonversiTanggalDb(card.Resolved),
+			CardStarted:     helpers.KonversiTanggalDb(card.Started),
 		}
 		if err != nil {
 			errGetCard += 1

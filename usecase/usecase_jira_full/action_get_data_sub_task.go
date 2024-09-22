@@ -33,7 +33,7 @@ func (usecase *JiraFullUsecaseImpl) GetDataSubTaskAction(kosong interface{}, idR
 		// 	httpCode, res = helpers.ResSuccess(true, "1003", "Data not found", kosong)
 		// } else {
 		logUpstream.IsSuccess = 1
-		dataOutput = BuilDataSubTask(cardKey, resStruct)
+		dataOutput = usecase.BuilDataSubTask(kosong, idRequest, cardKey, resStruct)
 		httpCode, res = helpers.ResSuccess(true, "0000", "Successfully", dataOutput)
 		// httpCode, res = usecase.InsertJiraSubTaskAction(kosong, dataOutput, httpCode, res)
 		// }

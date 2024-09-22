@@ -25,6 +25,7 @@ func (usecase *JiraFullUsecaseImpl) InsertJiraSubTaskAction(kosong interface{}, 
 			SubTaskCreated:     helpers.KonversiTanggalDb(subTask.Created),
 			SubTaskUpdated:     helpers.KonversiTanggalDb(subTask.Updated),
 			SubTaskResolved:    helpers.KonversiTanggalDb(subTask.Resolved),
+			SubTaskStarted:     helpers.KonversiTanggalDb(subTask.Started),
 		}
 		if err != nil {
 			errGetSubTask += 1
