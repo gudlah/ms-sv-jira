@@ -1,7 +1,7 @@
 package delivery_jira
 
 import (
-	"ms-sv-jira/usecase/usecase_auth"
+	"ms-sv-jira/delivery/delivery_auth"
 	"ms-sv-jira/usecase/usecase_jira"
 	"ms-sv-jira/usecase/usecase_log"
 
@@ -9,17 +9,17 @@ import (
 )
 
 type JiraDeliveryImpl struct {
-	AuthUsecase usecase_auth.AuthUsecase
-	LogUsecase  usecase_log.LogUsecase
-	Validate    *validator.Validate
-	JiraUsecase usecase_jira.JiraUsecase
+	AuthDelivery delivery_auth.AuthDelivery
+	LogUsecase   usecase_log.LogUsecase
+	Validate     *validator.Validate
+	JiraUsecase  usecase_jira.JiraUsecase
 }
 
-func NewJiraDelivery(authUsecase usecase_auth.AuthUsecase, jiraUsecase usecase_jira.JiraUsecase, logUsecase usecase_log.LogUsecase, validate *validator.Validate) JiraDelivery {
+func NewJiraDelivery(authDelivery delivery_auth.AuthDelivery, jiraUsecase usecase_jira.JiraUsecase, logUsecase usecase_log.LogUsecase, validate *validator.Validate) JiraDelivery {
 	return &JiraDeliveryImpl{
-		AuthUsecase: authUsecase,
-		LogUsecase:  logUsecase,
-		Validate:    validate,
-		JiraUsecase: jiraUsecase,
+		AuthDelivery: authDelivery,
+		LogUsecase:   logUsecase,
+		Validate:     validate,
+		JiraUsecase:  jiraUsecase,
 	}
 }

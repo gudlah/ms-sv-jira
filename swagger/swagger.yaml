@@ -1,0 +1,977 @@
+definitions:
+  dto.ReqDownstreamGetAllCard:
+    properties:
+      boardId:
+        type: integer
+      sprintId:
+        type: integer
+    required:
+    - boardId
+    - sprintId
+    type: object
+  dto.ReqDownstreamGetAllSprint:
+    properties:
+      boardId:
+        type: integer
+    required:
+    - boardId
+    type: object
+  dto.ReqDownstreamGetAllSubTask:
+    properties:
+      cardKey:
+        type: string
+    required:
+    - cardKey
+    type: object
+  dto.SwaggerBackendError:
+    properties:
+      data:
+        type: object
+      message:
+        example: Backend error
+        type: string
+      responseCode:
+        example: "2002"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerGeneralSystemError:
+    properties:
+      data:
+        type: object
+      message:
+        example: General system error
+        type: string
+      responseCode:
+        example: "2001"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerGetAlCardSuccess:
+    properties:
+      data:
+        properties:
+          cards:
+            items:
+              properties:
+                assigneName:
+                  example: Taofik Rakhman Sudrajat
+                  type: string
+                assigneeId:
+                  example: 6212f56f468c2e00716df01c
+                  type: string
+                attachment:
+                  items:
+                    properties:
+                      attachmentId:
+                        example: "10000"
+                        type: string
+                      authorId:
+                        example: 6212f56f468c2e00716df01c
+                        type: string
+                      authorName:
+                        example: Taofik Rakhman Sudrajat
+                        type: string
+                      cardId:
+                        example: "10000"
+                        type: string
+                      created:
+                        example: "2024-09-06 11:06:47"
+                        type: string
+                      fileName:
+                        example: Modul 3 Pengembangan TI.pdf
+                        type: string
+                      url:
+                        example: https://it-team-sharingvision.atlassian.net/rest/api/2/attachment/content/10000
+                        type: string
+                    type: object
+                  type: array
+                cardId:
+                  example: "10000"
+                  type: string
+                cardKey:
+                  example: SV-1
+                  type: string
+                cardTitle:
+                  example: Parsing-Task
+                  type: string
+                cardType:
+                  example: Task
+                  type: string
+                cardTypeId:
+                  example: "10001"
+                  type: string
+                columnId:
+                  example: "10001"
+                  type: string
+                comments:
+                  items:
+                    properties:
+                      authorId:
+                        example: 6212f56f468c2e00716df01c
+                        type: string
+                      authorName:
+                        example: Taofik Rakhman Sudrajat
+                        type: string
+                      body:
+                        example: THIS IS COMMENT ASDASDASDASDASDASDAS
+                        type: string
+                      cardId:
+                        example: "10000"
+                        type: string
+                      commentId:
+                        example: "10000"
+                        type: string
+                      created:
+                        example: "2024-09-10 18:09:33"
+                        type: string
+                      updated:
+                        example: "2024-09-10 18:09:33"
+                        type: string
+                    type: object
+                  type: array
+                created:
+                  example: "2024-09-06 11:04:14"
+                  type: string
+                creatorId:
+                  example: 6212f56f468c2e00716df01c
+                  type: string
+                creatorName:
+                  example: Taofik Rakhman Sudrajat
+                  type: string
+                description:
+                  example: Something here is a description hehe…
+                  type: string
+                priorityId:
+                  example: 3
+                  type: integer
+                priorityName:
+                  example: Medium
+                  type: string
+                reporterId:
+                  example: 6212f56f468c2e00716df01c
+                  type: string
+                reporterName:
+                  example: Taofik Rakhman Sudrajat
+                  type: string
+                resolved:
+                  example: "2024-09-14 18:53:22"
+                  type: string
+                updated:
+                  example: "2024-09-10 18:53:22"
+                  type: string
+              type: object
+            type: array
+          columnId:
+            example: "10001"
+            type: string
+          columnName:
+            example: In Progress
+            type: string
+          sprintId:
+            example: 1
+            type: integer
+        type: object
+      message:
+        example: Successfully
+        type: string
+      responseCode:
+        example: "0000"
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  dto.SwaggerGetAllFullSuccess:
+    properties:
+      data:
+        properties:
+          boards:
+            items:
+              properties:
+                boardId:
+                  example: 1
+                  type: integer
+                boardName:
+                  example: SCRUM board
+                  type: string
+                boardType:
+                  example: simple
+                  type: string
+                projectId:
+                  example: "10000"
+                  type: string
+                sprints:
+                  items:
+                    properties:
+                      boardId:
+                        example: 1
+                        type: integer
+                      columns:
+                        items:
+                          properties:
+                            cards:
+                              items:
+                                properties:
+                                  assigneeId:
+                                    example: 712020:1af3618d-09c5-40f0-991e-23e644b9f220
+                                    type: string
+                                  assigneeName:
+                                    example: Bagus Anjar Sadewa
+                                    type: string
+                                  attachment:
+                                    items:
+                                      properties:
+                                        attachmentId:
+                                          example: "10002"
+                                          type: string
+                                        authorId:
+                                          example: 712020:1af3618d-09c5-40f0-991e-23e644b9f220
+                                          type: string
+                                        authorName:
+                                          example: Bagus Anjar Sadewa
+                                          type: string
+                                        cardId:
+                                          example: "10032"
+                                          type: string
+                                        created:
+                                          example: "2024-09-12 02:51:42"
+                                          type: string
+                                        fileName:
+                                          example: New Project.png
+                                          type: string
+                                        url:
+                                          example: https://it-team-sharingvision.atlassian.net/rest/api/2/attachment/content/10002
+                                          type: string
+                                      type: object
+                                    type: array
+                                  cardId:
+                                    example: "10032"
+                                    type: string
+                                  cardKey:
+                                    example: SV-11
+                                    type: string
+                                  cardTitle:
+                                    example: 'Development Fitur : Cek Hari Libur'
+                                    type: string
+                                  cardType:
+                                    example: Task
+                                    type: string
+                                  cardTypeId:
+                                    example: "10001"
+                                    type: string
+                                  columnId:
+                                    example: "10001"
+                                    type: string
+                                  comments:
+                                    items:
+                                      properties:
+                                        authorId:
+                                          example: 712020:1af3618d-09c5-40f0-991e-23e644b9f220
+                                          type: string
+                                        authorName:
+                                          example: Bagus Anjar Sadewa
+                                          type: string
+                                        body:
+                                          example: This is a comment
+                                          type: string
+                                        cardId:
+                                          example: "10032"
+                                          type: string
+                                        commentId:
+                                          example: "12345"
+                                          type: string
+                                        created:
+                                          example: "2024-09-12 02:51:42"
+                                          type: string
+                                      type: object
+                                    type: array
+                                  created:
+                                    example: "2024-09-08 03:28:23"
+                                    type: string
+                                  description:
+                                    example: Task details here
+                                    type: string
+                                  priorityId:
+                                    example: 3
+                                    type: integer
+                                  priorityName:
+                                    example: Medium
+                                    type: string
+                                  resolved:
+                                    example: "2024-09-19 02:30:07"
+                                    type: string
+                                  subTasks:
+                                    items:
+                                      properties:
+                                        cardKey:
+                                          example: SV-11
+                                          type: string
+                                        created:
+                                          example: "2024-09-08 03:42:49"
+                                          type: string
+                                        priorityId:
+                                          example: 3
+                                          type: integer
+                                        priorityName:
+                                          example: Medium
+                                          type: string
+                                        statusName:
+                                          example: To Do
+                                          type: string
+                                        subTaskId:
+                                          example: "10045"
+                                          type: string
+                                        subTaskKey:
+                                          example: SV-24
+                                          type: string
+                                        subTaskTitle:
+                                          example: Collect LC Testing
+                                          type: string
+                                        updated:
+                                          example: "2024-09-08 03:43:07"
+                                          type: string
+                                      type: object
+                                    type: array
+                                  updated:
+                                    example: "2024-09-16 02:30:07"
+                                    type: string
+                                type: object
+                              type: array
+                            columnId:
+                              example: "10001"
+                              type: string
+                            columnName:
+                              example: In Progress
+                              type: string
+                            sprintId:
+                              example: 1
+                              type: integer
+                          type: object
+                        type: array
+                      createdDate:
+                        example: "2024-09-06 11:03:22"
+                        type: string
+                      endDate:
+                        example: "2024-09-13 11:06:48"
+                        type: string
+                      goal:
+                        example: End the parsing
+                        type: string
+                      name:
+                        example: SCRUM Sprint 1
+                        type: string
+                      sprintId:
+                        example: 1
+                        type: integer
+                      startDate:
+                        example: "2024-09-06 11:06:01"
+                        type: string
+                      state:
+                        example: active
+                        type: string
+                    type: object
+                  type: array
+              type: object
+            type: array
+          projectId:
+            example: "10000"
+            type: string
+          projectKey:
+            example: SV
+            type: string
+          projectName:
+            example: Parsing-API
+            type: string
+          projectTypeKey:
+            example: software
+            type: string
+        type: object
+      message:
+        example: Successfully
+        type: string
+      responseCode:
+        example: "0000"
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  dto.SwaggerGetAllPrioritiesSuccess:
+    properties:
+      data:
+        items:
+          properties:
+            priorityDescription:
+              example: This problem will block progress.
+              type: string
+            priorityId:
+              example: 1
+              type: integer
+            priorityName:
+              example: Highest
+              type: string
+          type: object
+        type: array
+      message:
+        example: Succesfully
+        type: string
+      responseCode:
+        example: "1010"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerGetAllProjectSuccess:
+    properties:
+      data:
+        items:
+          properties:
+            boards:
+              items:
+                properties:
+                  boardId:
+                    example: 1
+                    type: integer
+                  boardName:
+                    example: SCRUM board
+                    type: string
+                  boardType:
+                    example: simple
+                    type: string
+                  projectId:
+                    example: "10000"
+                    type: string
+                type: object
+              type: array
+            projectId:
+              example: "10000"
+              type: string
+            projectKey:
+              example: SV
+              type: string
+            projectName:
+              example: Parsing-API
+              type: string
+            projectTypeKey:
+              example: software
+              type: string
+          type: object
+        type: array
+      message:
+        example: Successfully
+        type: string
+      responseCode:
+        example: "0000"
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  dto.SwaggerGetAllSprintSuccess:
+    properties:
+      data:
+        items:
+          properties:
+            boardId:
+              example: 1
+              type: integer
+            createdDate:
+              example: "2024-09-06 11:03:22"
+              type: string
+            endDate:
+              example: "2024-09-13 11:06:48"
+              type: string
+            goal:
+              example: End the parsing
+              type: string
+            name:
+              example: SCRUM Sprint 1
+              type: string
+            sprintId:
+              example: 1
+              type: integer
+            startDate:
+              example: "2024-09-06 11:06:01"
+              type: string
+            state:
+              example: active
+              type: string
+          type: object
+        type: array
+      message:
+        example: Successfully
+        type: string
+      responseCode:
+        example: "0000"
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  dto.SwaggerGetAllSubTaskSuccess:
+    properties:
+      data:
+        items:
+          properties:
+            assigneeId:
+              example: 712020:1af3618d-09c5-40f0-991e-23e644b9f220
+              type: string
+            assigneeName:
+              example: Bagus Anjar Sadewa
+              type: string
+            cardKey:
+              example: SV-11
+              type: string
+            created:
+              example: "2024-09-08 03:42:49"
+              type: string
+            creatorId:
+              example: 712020:1af3618d-09c5-40f0-991e-23e644b9f220
+              type: string
+            creatorName:
+              example: Bagus Anjar Sadewa
+              type: string
+            priorityId:
+              example: 3
+              type: integer
+            priorityName:
+              example: Medium
+              type: string
+            reporterId:
+              example: 712020:1af3618d-09c5-40f0-991e-23e644b9f220
+              type: string
+            reporterName:
+              example: Bagus Anjar Sadewa
+              type: string
+            resolved:
+              example: "2024-09-10 03:43:07"
+              type: string
+            statusId:
+              example: "10000"
+              type: string
+            statusName:
+              example: To Do
+              type: string
+            subTaskDescription:
+              example: Lorem ipsum dolor
+              type: string
+            subTaskId:
+              example: "10045"
+              type: string
+            subTaskKey:
+              example: SV-24
+              type: string
+            subTaskTitle:
+              example: Collect LC Testing
+              type: string
+            updated:
+              example: "2024-09-09 03:43:07"
+              type: string
+          type: object
+        type: array
+      message:
+        example: Successfully
+        type: string
+      responseCode:
+        example: "1009"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerGetAllUserSuccess:
+    properties:
+      data:
+        items:
+          properties:
+            accountId:
+              example: 6212f56f468c2e00716df01c
+              type: string
+            active:
+              example: true
+              type: boolean
+            displayName:
+              example: Taofik Rakhman Sudrajat
+              type: string
+            emailAddress:
+              example: bagus.anjar@it.sharingvision.com
+              type: string
+            locale:
+              example: en_US
+              type: string
+          type: object
+        type: array
+      message:
+        example: Successfully
+        type: string
+      responseCode:
+        example: "0000"
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  dto.SwaggerInvalidCredential:
+    properties:
+      data:
+        type: object
+      message:
+        example: Invalid credential
+        type: string
+      responseCode:
+        example: "1001"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerInvalidValue:
+    properties:
+      data:
+        type: object
+      message:
+        example: Invalid value
+        type: string
+      responseCode:
+        example: "1002"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  dto.SwaggerIpBlocked:
+    properties:
+      data:
+        type: object
+      message:
+        example: IP blocked
+        type: string
+      responseCode:
+        example: "2004"
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/all:
+    get:
+      consumes:
+      - application/json
+      description: Get All Full
+      parameters:
+      - default: Basic <Add access token here>
+        description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SwaggerGetAllFullSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidValue'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidCredential'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.SwaggerIpBlocked'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.SwaggerGeneralSystemError'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/dto.SwaggerBackendError'
+      summary: Get All Full
+      tags:
+      - Jira
+  /api/v1/cards:
+    post:
+      consumes:
+      - application/json
+      description: Get Cards
+      parameters:
+      - default: Basic <Add access token here>
+        description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Body Request
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ReqDownstreamGetAllCard'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SwaggerGetAlCardSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidValue'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidCredential'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.SwaggerIpBlocked'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.SwaggerGeneralSystemError'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/dto.SwaggerBackendError'
+      summary: Get Cards
+      tags:
+      - Jira
+  /api/v1/priorities:
+    get:
+      consumes:
+      - application/json
+      description: Get All Priority
+      parameters:
+      - default: Basic <Add access token here>
+        description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SwaggerGetAllPrioritiesSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidValue'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidCredential'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.SwaggerIpBlocked'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.SwaggerGeneralSystemError'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/dto.SwaggerBackendError'
+      summary: Get All Priority
+      tags:
+      - Jira
+  /api/v1/projects:
+    get:
+      consumes:
+      - application/json
+      description: Get All Project
+      parameters:
+      - default: Basic <Add access token here>
+        description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SwaggerGetAllProjectSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidValue'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidCredential'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.SwaggerIpBlocked'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.SwaggerGeneralSystemError'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/dto.SwaggerBackendError'
+      summary: Get All Project
+      tags:
+      - Jira
+  /api/v1/sprints:
+    post:
+      consumes:
+      - application/json
+      description: Get Sprints
+      parameters:
+      - default: Basic <Add access token here>
+        description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Body Request
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ReqDownstreamGetAllSprint'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SwaggerGetAllSprintSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidValue'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidCredential'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.SwaggerIpBlocked'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.SwaggerGeneralSystemError'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/dto.SwaggerBackendError'
+      summary: Get Sprints
+      tags:
+      - Jira
+  /api/v1/subtaks:
+    post:
+      consumes:
+      - application/json
+      description: Get Sub Tasks
+      parameters:
+      - default: Basic <Add access token here>
+        description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Body Request
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ReqDownstreamGetAllSubTask'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SwaggerGetAllSubTaskSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidValue'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidCredential'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.SwaggerIpBlocked'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.SwaggerGeneralSystemError'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/dto.SwaggerBackendError'
+      summary: Get Sub Tasks
+      tags:
+      - Jira
+  /api/v1/users:
+    get:
+      consumes:
+      - application/json
+      description: Get All User
+      parameters:
+      - default: Basic <Add access token here>
+        description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SwaggerGetAllUserSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidValue'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.SwaggerInvalidCredential'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.SwaggerIpBlocked'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.SwaggerGeneralSystemError'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/dto.SwaggerBackendError'
+      summary: Get All User
+      tags:
+      - Jira
+swagger: "2.0"

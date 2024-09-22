@@ -3,7 +3,7 @@ package dto
 type ResUpstreamGetAllProject struct {
 	Expand         string      `json:"expand"`
 	Self           string      `json:"self"`
-	Id             int         `json:"id"`
+	Id             string      `json:"id"`
 	Key            string      `json:"key"`
 	Name           string      `json:"name"`
 	AvatarUrls     AvatarUrls  `json:"avatarUrls"`
@@ -12,6 +12,6 @@ type ResUpstreamGetAllProject struct {
 	Style          string      `json:"style"`
 	IsPrivate      bool        `json:"isPrivate"`
 	Properties     interface{} `json:"properties"`
-	EntityID       string      `json:"entityId"`
+	EntityId       string      `json:"entityId"`
 	Uuid           string      `json:"uuid"`
 }
